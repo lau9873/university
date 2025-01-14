@@ -1,0 +1,149 @@
+
+table FUNCIONARIO
+(
+_ Num _,
+Nome,
+Email,
+Sexo, 
+TrabFaz,
+DataNasc,
+MRua,
+MNum, 
+MAndar?, 
+MLocalidade, 
+MCodPostal,
+Limpeza? --> PISO.Num,
+DataHora?
+)
+
+table NUM_TELEFONE_FUNC
+(
+_ Num _ -->FUNCIONARIO.Num,
+_Telefone_
+)
+
+table CLIENTE
+(
+_NumMec_,
+Nome,
+Email,
+Sexo,
+DataNasc,
+MRua,
+MNum, 
+MAndar?, 
+MLocalidade, 
+MCodPostal,
+FimMulta?,
+Departamento,
+Reservou? --> SALA_DE_ESTUDO.Codigo,
+Inicio?,
+Fim?
+)
+
+table NUM_TELEFONE_CLIENTE
+(
+_ NumMec _ -->CLIENTE.NumMec,
+_Telefone_
+)
+
+table ATENDIDO_POR
+(
+_Cliente_ --> CLIENTE.NumMec,
+_Funcionario_ -->FUNCIONARIO.Num,
+Tipo,
+DataHora
+)
+
+table ARTIGO
+(
+_Codigo_,
+Titulo?,
+Autor?,
+NumPaginas?,
+Volume?,
+Tipo,
+Disponibilidade,
+Localizacao --> PISO.Num,
+Estante?,
+Seccao?,
+Requisitado? --> CLIENTE.NumMec,
+DataHora?
+)
+
+table AREA_CIENTIFICA
+(
+_Artigo_ -->ARTIGO.Codigo,
+_Area_
+)
+
+table SALA_DE_ESTUDO
+(
+_Codigo_,
+Capacidade,
+NumPCs,
+LimiteTempo,
+Localizado --> PISO.Num,
+Especificamente?
+)
+
+table CADEIRA
+(
+_Codigo_,
+Nome,
+Departamento,
+Regente --> FUNCIONARIO.Num,
+DataInicio
+)
+
+table EVENTO
+(
+_Codigo_,
+Capacidade,
+DataHora,
+Tipo,
+Decorre --> SALA_DE_ESTUDO.Codigo,
+Duracao,
+RazaoEspecifica?,
+CadeiraAssociada? -->CADEIRA.Codigo,
+TemaReferido?
+)
+
+table PISO
+(
+_Num_,
+NumEspacoLeitura
+)
+table AREAS_PISO
+(
+_Piso_ --> PISO.Num,
+_Area_
+)
+table INSCRICAO
+(
+_Cliente_ --> CLIENTE.NumMec,
+_Evento_ --> EVENTO.Codigo,
+NumEntrada
+)
+
+table RECOMENDADO_POR_CADEIRA
+(
+_Artigo_ --> ARTIGO.Codigo,
+_Cadeira_ -->CADEIRA.Codigo,
+GrauObrigatoriadade,
+Temas?
+)
+
+table USADO_POR_EVENTO
+(
+_Evento_ -->EVENTO.Codigo,
+_Artigo_ -->ARTIGO.Codigo,
+Justificacao?
+)
+
+table RESPONSAVEL_PELO_EVENTO
+(
+_Funcionario_ --> FUNCIONARIO.Num,
+_Evento_-->EVENTO.Codigo,
+Funcao
+)

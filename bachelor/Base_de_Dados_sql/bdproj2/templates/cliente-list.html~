@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Funcionários{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>NumMec</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Departamento</th>
+    <th>FimMulta</th>
+  </tr>
+
+  {% for cliente in clientes %}
+  <tr>
+    <td><a href="/clientes/{{cliente.NumMec}}">{{cliente.NumMec }}</a></td>
+    
+    <td> {{cliente.Nome}} </td>
+    <td> {{cliente.Email}} </td>
+    <td> {{cliente.Departamento}} </td>
+    <td>
+    {% if cliente.FimMulta %}
+      {{cliente.FimMulta}}
+    {% else %}
+      N/A
+    {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

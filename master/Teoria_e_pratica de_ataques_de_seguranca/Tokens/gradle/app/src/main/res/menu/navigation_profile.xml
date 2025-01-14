@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_account_circle_white_24dp" android:id="@+id/personalData" android:title="@string/navigation_profile"/>
+    <item android:icon="@drawable/ic_credit_card_black_24dp" android:id="@+id/payment" android:title="@string/navigation_payment"/>
+    <item android:icon="@drawable/ic_assignment_ind_black_24dp" android:id="@+id/socialProfile" android:title="@string/navigation_social_profile"/>
+</menu>

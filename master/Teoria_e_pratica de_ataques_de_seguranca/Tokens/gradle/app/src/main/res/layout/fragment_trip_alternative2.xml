@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <android.support.p067v7.widget.RecyclerView android:id="@+id/topList" android:paddingLeft="12dp" android:paddingTop="8dp" android:paddingRight="12dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+    <android.support.p067v7.widget.RecyclerView android:id="@+id/trip" android:paddingBottom="72dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <android.support.p065v4.widget.SwipeRefreshLayout android:id="@+id/refresher" android:layout_width="match_parent" android:layout_height="match_parent">
+            <android.support.p067v7.widget.RecyclerView android:id="@+id/list" android:paddingTop="16dp" android:paddingBottom="72dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </android.support.p065v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
+    <android.support.constraint.ConstraintLayout android:gravity="center" android:layout_gravity="center" android:id="@+id/error" android:padding="32dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/logo_metro" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/logo_metro" android:contentDescription="@string/metro" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0"/>
+        <ImageView android:id="@+id/logo_bus" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/logo_bus" android:contentDescription="@string/bus" android:layout_marginEnd="8dp" app:layout_constraintRight_toLeftOf="@+id/logo_metro"/>
+        <ImageView android:id="@+id/logo_train" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/logo_train" android:contentDescription="@string/train" android:layout_marginStart="8dp" app:layout_constraintLeft_toRightOf="@+id/logo_metro"/>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Title" android:textColor="#8a000000" android:gravity="center_horizontal" android:id="@+id/errorTitle" android:paddingTop="8dp" android:paddingBottom="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/trip_validate_to_start" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0" app:layout_constraintTop_toBottomOf="@+id/logo_bus"/>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textColor="#8a000000" android:gravity="center_horizontal" android:id="@+id/errorDescription" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/trip_validate_to_start_hint" app:layout_constraintTop_toBottomOf="@+id/errorTitle"/>
+        <LinearLayout android:id="@+id/attentionLayout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent" app:layout_constraintTop_toBottomOf="@+id/errorDescription">
+            <ImageView android:id="@+id/logo_attention" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_attention" android:contentDescription="@string/train" android:layout_marginStart="8dp"/>
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textColor="#8a000000" android:gravity="center_horizontal" android:id="@+id/attention" android:paddingTop="8dp" android:paddingBottom="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dont_uninstal_hint"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

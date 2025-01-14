@@ -1,0 +1,1 @@
+-O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -DOMNETPPLIBS_IMPORT -DINET_IMPORT -DVEINS_IMPORT -I/home/fabiana/Downloads/inet4.4/src -I/home/fabiana/Documents/Veins/veins/src -I. -I/home/fabiana/Downloads/omnetpp-6.0.1/include

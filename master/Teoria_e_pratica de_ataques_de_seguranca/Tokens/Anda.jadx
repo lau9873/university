@@ -1,0 +1,1105 @@
+{
+  "projectVersion": 1,
+  "files": [
+    "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+  ],
+  "treeExpansions": [
+    [
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p206a.p207a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "io",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "i",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p219f",
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p212e",
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p214b",
+      "p212e",
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p215c",
+      "p212e",
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p216d",
+      "p212e",
+      "p208b.p209a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p000a",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p068b.p069a",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "com",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "androidx",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "android",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "b.a",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "b.a",
+      "c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "b",
+      "b.a",
+      "c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "spirtech.android.hce.calypso",
+      "com",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p215c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p112g",
+      "p215c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p113a.p114a.p115a",
+      "p112g",
+      "p215c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p125c.p126a.p127a",
+      "p112g",
+      "p215c",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p216d",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ],
+    [
+      "p200b.p201a",
+      "p205h",
+      "Source code",
+      "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk"
+    ]
+  ],
+  "codeData": {
+    "comments": [],
+    "renames": []
+  },
+  "openTabs": [
+    {
+      "type": "class",
+      "tabPath": "h.a.a.u",
+      "subPath": "java",
+      "caret": 1078,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.w",
+      "subPath": "java",
+      "caret": 182,
+      "view": {
+        "x": 0,
+        "y": 122
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.v",
+      "subPath": "java",
+      "caret": 15715,
+      "view": {
+        "x": 0,
+        "y": 7208
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.s",
+      "subPath": "java",
+      "caret": 106,
+      "view": {
+        "x": 0,
+        "y": 62
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.r",
+      "subPath": "java",
+      "caret": 807,
+      "view": {
+        "x": 0,
+        "y": 362
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.q",
+      "subPath": "java",
+      "caret": 216,
+      "view": {
+        "x": 0,
+        "y": 137
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.p",
+      "subPath": "java",
+      "caret": 619,
+      "view": {
+        "x": 0,
+        "y": 317
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.m",
+      "subPath": "java",
+      "caret": 232,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.l",
+      "subPath": "java",
+      "caret": 48379,
+      "view": {
+        "x": 1,
+        "y": 17747
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.h",
+      "subPath": "java",
+      "caret": 3949,
+      "view": {
+        "x": 0,
+        "y": 825
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.i",
+      "subPath": "java",
+      "caret": 2535,
+      "view": {
+        "x": 49,
+        "y": 255
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.j",
+      "subPath": "java",
+      "caret": 844,
+      "view": {
+        "x": 0,
+        "y": 174
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.k",
+      "subPath": "java",
+      "caret": 383,
+      "view": {
+        "x": 0,
+        "y": 197
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.g",
+      "subPath": "java",
+      "caret": 589,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.e",
+      "subPath": "java",
+      "caret": 921,
+      "view": {
+        "x": 0,
+        "y": 40
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.b",
+      "subPath": "java",
+      "caret": 558,
+      "view": {
+        "x": 0,
+        "y": 257
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.c",
+      "subPath": "java",
+      "caret": 868,
+      "view": {
+        "x": 0,
+        "y": 259
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.d",
+      "subPath": "java",
+      "caret": 494,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "e.b0",
+      "subPath": "java",
+      "caret": 2286,
+      "view": {
+        "x": 0,
+        "y": 1427
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.c",
+      "subPath": "java",
+      "caret": 3022,
+      "view": {
+        "x": 0,
+        "y": 1217
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.u",
+      "subPath": "java",
+      "caret": 201,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.q",
+      "subPath": "java",
+      "caret": 112,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.c",
+      "subPath": "java",
+      "caret": 170,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.d",
+      "subPath": "java",
+      "caret": 177,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.e",
+      "subPath": "java",
+      "caret": 228,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.f",
+      "subPath": "java",
+      "caret": 1550,
+      "view": {
+        "x": 0,
+        "y": 705
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.h",
+      "subPath": "java",
+      "caret": 180,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.i",
+      "subPath": "java",
+      "caret": 136,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.j",
+      "subPath": "java",
+      "caret": 112,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.k",
+      "subPath": "java",
+      "caret": 157,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.l",
+      "subPath": "java",
+      "caret": 112,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.m",
+      "subPath": "java",
+      "caret": 136,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.n",
+      "subPath": "java",
+      "caret": 112,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.o",
+      "subPath": "java",
+      "caret": 186,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.g4",
+      "subPath": "java",
+      "caret": 2454,
+      "view": {
+        "x": 0,
+        "y": 512
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.j",
+      "subPath": "java",
+      "caret": 287,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.l3",
+      "subPath": "java",
+      "caret": 358,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.h4",
+      "subPath": "java",
+      "caret": 709,
+      "view": {
+        "x": 0,
+        "y": 287
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "pt.card4b.backendbeacons.Constants",
+      "subPath": "java",
+      "caret": 156,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "pt.card4b.backendbeacons.Database",
+      "subPath": "java",
+      "caret": 492,
+      "view": {
+        "x": 0,
+        "y": 197
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.z",
+      "subPath": "java",
+      "caret": 180,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "pt.card4b.backendbeacons.BackendListeners",
+      "subPath": "java",
+      "caret": 928,
+      "view": {
+        "x": 0,
+        "y": 422
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "pt.card4b.backendbeacons.DataModels",
+      "subPath": "java",
+      "caret": 10267,
+      "view": {
+        "x": 0,
+        "y": 6332
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.b",
+      "subPath": "java",
+      "caret": 384,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.f.a",
+      "subPath": "java",
+      "caret": 108,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.a.h",
+      "subPath": "java",
+      "caret": 249,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.b.a",
+      "subPath": "java",
+      "caret": 755,
+      "view": {
+        "x": 0,
+        "y": 332
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.b.b",
+      "subPath": "java",
+      "caret": 249,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.c.a",
+      "subPath": "java",
+      "caret": 206,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.c.b",
+      "subPath": "java",
+      "caret": 180,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.c.c",
+      "subPath": "java",
+      "caret": 365,
+      "view": {
+        "x": 0,
+        "y": 167
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.c.d",
+      "subPath": "java",
+      "caret": 316,
+      "view": {
+        "x": 0,
+        "y": 167
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.g3",
+      "subPath": "java",
+      "caret": 338,
+      "view": {
+        "x": 0,
+        "y": 152
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.h3",
+      "subPath": "java",
+      "caret": 274,
+      "view": {
+        "x": 0,
+        "y": 114
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.i3",
+      "subPath": "java",
+      "caret": 992,
+      "view": {
+        "x": 0,
+        "y": 392
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.g",
+      "subPath": "java",
+      "caret": 295,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.f",
+      "subPath": "java",
+      "caret": 236,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.o3",
+      "subPath": "java",
+      "caret": 293,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.t3",
+      "subPath": "java",
+      "caret": 594,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.v3",
+      "subPath": "java",
+      "caret": 1116,
+      "view": {
+        "x": 0,
+        "y": 2319
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.x1",
+      "subPath": "java",
+      "caret": 244,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.x3",
+      "subPath": "java",
+      "caret": 525,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.j3",
+      "subPath": "java",
+      "caret": 413,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.i0",
+      "subPath": "java",
+      "caret": 208,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.q0",
+      "subPath": "java",
+      "caret": 285,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.k3",
+      "subPath": "java",
+      "caret": 1948,
+      "view": {
+        "x": 0,
+        "y": 797
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.m3",
+      "subPath": "java",
+      "caret": 1179,
+      "view": {
+        "x": 0,
+        "y": 482
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.n3",
+      "subPath": "java",
+      "caret": 2524,
+      "view": {
+        "x": 0,
+        "y": 992
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.p3",
+      "subPath": "java",
+      "caret": 3853,
+      "view": {
+        "x": 0,
+        "y": 4020
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.q3",
+      "subPath": "java",
+      "caret": 1434,
+      "view": {
+        "x": 0,
+        "y": 602
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.r3",
+      "subPath": "java",
+      "caret": 1543,
+      "view": {
+        "x": 0,
+        "y": 617
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.s3",
+      "subPath": "java",
+      "caret": 2204,
+      "view": {
+        "x": 0,
+        "y": 786
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.u3",
+      "subPath": "java",
+      "caret": 825,
+      "view": {
+        "x": 0,
+        "y": 1174
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.w3",
+      "subPath": "java",
+      "caret": 1444,
+      "view": {
+        "x": 0,
+        "y": 572
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.y3",
+      "subPath": "java",
+      "caret": 1410,
+      "view": {
+        "x": 0,
+        "y": 572
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.z3",
+      "subPath": "java",
+      "caret": 1395,
+      "view": {
+        "x": 0,
+        "y": 4624
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "pt.card4b.backendbeacons.App",
+      "subPath": "java",
+      "caret": 636,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "i.b",
+      "subPath": "java",
+      "caret": 91,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "i.i",
+      "subPath": "java",
+      "caret": 228,
+      "view": {
+        "x": 55,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "b.a.b",
+      "subPath": "java",
+      "caret": 108,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "c.b.a.b.b",
+      "subPath": "java",
+      "caret": 204,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.a.a.a",
+      "subPath": "java",
+      "caret": 134,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.e.d.f3",
+      "subPath": "java",
+      "caret": 167,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.a",
+      "subPath": "java",
+      "caret": 206,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "h.b.a.d.b",
+      "subPath": "java",
+      "caret": 203,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "c.g.a.a.a.f",
+      "subPath": "java",
+      "caret": 151,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "com.spirtech.android.hce.calypso.CalypsoHceNatives",
+      "subPath": "java",
+      "caret": 120,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "com.spirtech.android.hce.calypso.BootReceiver",
+      "subPath": "java",
+      "caret": 283,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "com.spirtech.android.hce.calypso.AlarmReceiver",
+      "subPath": "java",
+      "caret": 309,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "com.spirtech.android.hce.calypso.m",
+      "subPath": "java",
+      "caret": 142,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "com.spirtech.android.hce.calypso.ContactlessService",
+      "subPath": "java",
+      "caret": 727,
+      "view": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "class",
+      "tabPath": "c.g.a.a.a.a.a",
+      "subPath": "java",
+      "caret": 6110,
+      "view": {
+        "x": 4,
+        "y": 1698
+      }
+    }
+  ],
+  "activeTab": 43,
+  "cacheDir": "Anda_1.2.17.5952 (19_06 25_12_2021)_Apkpure.apk.cache",
+  "enableLiveReload": false,
+  "searchHistory": [
+    "hce",
+    "verifyBea",
+    "verifyBeac",
+    "getPersonalEnc",
+    "getPers",
+    "getSystemService",
+    "nfc"
+  ]
+}

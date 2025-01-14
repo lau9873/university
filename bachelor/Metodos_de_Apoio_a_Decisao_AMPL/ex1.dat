@@ -1,0 +1,38 @@
+data;
+set CRUDE:= C1, C2, C3;
+set INTERM:= NAPHTHA, OIL;
+set GAS := G1 G2 G3;
+set INTERM_after:= NAPHTHA NATURAL CRACKED;
+
+
+param percentages:
+   NAPHTHA    OIL:=
+C1 0.50     0.42
+C2 0.60     0.38
+C3 0.55     0.41;
+
+param: 
+            octane_rate_i:=
+NAPHTHA  10
+NATURAL  6
+CRACKED  15;
+
+param: 
+    octane_rate_g min_barris venda:=
+G1 10 3000 70
+G2 9 2000 60 
+G3 8 1000  50  ;
+
+param: 
+    compra max_barris:=
+C1 45 5000
+C2 35 5000
+C3 25 5000 ;
+
+param barril_pub:=10;
+param custo_destilar1:= 3;
+param custo_misturar1:= 1;
+param max_destilar:= 14000;
+param custo_crack1:= 4;
+param max_crack:= 3500;
+

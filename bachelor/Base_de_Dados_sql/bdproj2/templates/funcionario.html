@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ funcionario.Nome }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Funcionário Info</h2>
+  
+  <p>
+    <b>Número Mecanográfico: </b>{{funcionario.NumMec }}
+  </p>
+
+  <p>
+    <b>Nome: </b>{{funcionario.Nome }}
+  </p>
+
+  <p>
+    <b>Função: </b>{{funcionario.TrabFaz}}
+  </p>
+
+  <p>
+    <b>Email: </b>{{funcionario.Email}}
+ 
+  </p>
+
+{% if  numerosDeTelefoneDoFuncionario.Telefone  %}
+  <p>
+  <b>Número(s) de Telefone: </b><ul>
+    {% for num in numerosDeTelefoneDoFuncionario  %}      
+    <li>{{num.Telefone}}</li>
+    {% endfor %}
+  </ul>
+  </p>
+{% endif %}
+  
+{% if limpeza.Nome %}
+  <p>
+  <b>Limpeza dos Pisos</b>
+  </p>
+  <table> 
+    <tr>
+      <th>Piso</th>
+      <th>Data e Hora</th>
+    </tr>
+    {% for piso in limpeza %}
+    <tr>
+      <td>{{limpeza.Limpeza}}</td>
+      <td>{{limpeza.DataHora}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+{% endblock %}
+  

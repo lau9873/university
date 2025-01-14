@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Pisos{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Número</th>
+    <th>NumEspacosLeitura</th>
+  </tr>
+
+  {% for piso in pisos %}
+  <tr>
+    <td><a href="/pisos/{{piso.Num}}">{{piso.Num}}</a></td>
+    <td>
+    {% if piso.NumEspacosLeitura %}
+      {{piso.NumEspacosLeitura}}
+    {% else %}
+      0
+    {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

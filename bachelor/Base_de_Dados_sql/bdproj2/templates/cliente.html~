@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ cliente.Nome }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Cliente Info</h2>
+  
+  <p>
+    <b>Número Mecanográfico: </b>{{cliente.NumMec }}
+  </p>
+
+  <p>
+    <b>Email: </b>{{cliente.Email }}
+  </p>
+  
+  <p>
+    <b>Departamento: </b>{{cliente.Departamento }}
+  </p>
+
+  {% if cliente.FimMulta %}
+  <p>
+  <b>Data de Fim da Multa: </b>{{cliente.FimMulta}}
+  </p>
+  {% endif %}
+
+ 
+ <p> 
+  <b>Número(s) de Telefone: </b><ul>
+    {% for num in numerosDeTelefoneDoCliente  %}      
+    <li>{{num.Telefone}}</li>
+    {% endfor %}
+  </ul>
+ </p>
+
+ {% if atendidoPor %}
+ <p>
+    <b>Atendimento(s)</b>
+  </p>
+  
+  <table> 
+    <tr>
+      <th>Tipo</th>
+      <th>Funcionário</th>
+      <th>Data e Hora</th>
+    </tr>
+    {% for atend in atendidoPor %}
+    <tr>
+      <td>{{atend.Tipo}}</td>
+      <td><a href="/funcionarios/{{atend.NumMec_Funcionario}}">{{atend.Funcionario}}</a></td>
+      <td>{{atend.DataHora}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  
+
+{% if incricao  %}
+  <p>
+    <b> Inscrições em Eventos </b>
+  </p>
+  <table> 
+    <tr>
+      <th>Nome Evento</th>
+      <th>Código Evento</th>
+      <th>Tipo Evento</th>
+      <th>Numero de Entrada</th>
+    </tr>
+    {% for evento in inscricao %}
+    <tr>
+      <td>{{inscricao.Nome}}</td>
+      <td>{{inscricao.Codigo}}</td>
+      <td>{{inscricao.Tipo}}</td>
+      <td>{{inscrcao.NumEntrada}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+
+{% if artigoQueRequisitou %}
+ <p>
+    <b>Artigo Requisitado: </b><a href="/artigos/{{ artigoQueRequisitou.Codigo}}">{{artigoQueRequisitou.Titulo}}</a>
+ </p>
+ {% endif %}
+
+ {% if salaDeEstudoReservada %}
+ <p>
+   <b>Reserva Corrente de Sala de Estudo</b><ul>
+     <b>Id da Sala</b>{{salaDeEstudoReservada.Codigo}}
+     <b>Inicio da Reserva</b>{{salaDeEstudoReservada.Inicio}}
+     <b>Fim da Reserva</b>{{salaDeEstudoReservada.Fim}}</ul>
+ <p>
+{% endif %}
+{% endblock %} 
+     
+     
+   

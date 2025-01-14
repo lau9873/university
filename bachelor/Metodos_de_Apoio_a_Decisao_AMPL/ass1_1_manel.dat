@@ -1,0 +1,32 @@
+data;
+
+set CRUDE := C1 C2  c3;
+set INTERM := NAPHTHA OIL;
+set GAS := G1 G2 G3;
+
+param percentages:     
+        NAPHTHA   OIL    :=
+C1       0.50     0.42    
+C2       0.60     0.38        
+c3       0.55     0.41;
+
+
+param:  purchasePrice     buyLimit    :=
+C1          45              5000    
+C2          35              5000
+c3          25              5000;
+
+
+param:  sellingPrice     gas_rating   demand :=
+G1          70               10        3000
+G2          60                9        2000
+G3          50                8        1000;
+
+param   octane_rate :=
+NAPHTHA     10
+OIL          6;
+
+param advertising_demand := 10;
+param destillationCostPerUnit := 3;
+param blendingCostPerUnit := 1;
+param maxDistill := 14000;

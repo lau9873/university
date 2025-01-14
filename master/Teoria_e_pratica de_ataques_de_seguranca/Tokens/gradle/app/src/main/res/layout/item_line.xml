@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center_vertical" android:orientation="horizontal" android:background="?android:attr/listChoiceBackgroundIndicator" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:paddingStart="16dp" android:paddingEnd="12dp">
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="40dp" android:minHeight="28dp" android:paddingStart="4dp" android:paddingEnd="4dp"/>
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body2" android:paddingLeft="12dp" android:paddingRight="12dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <ImageView android:id="@+id/vehicleType" android:layout_width="48dp" android:layout_height="48dp" android:paddingStart="8dp" android:paddingEnd="4dp"/>
+</LinearLayout>

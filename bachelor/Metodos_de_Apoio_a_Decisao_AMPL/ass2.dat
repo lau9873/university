@@ -1,0 +1,30 @@
+set programmers:= p1 p2 p3;
+set skills:= c py web;
+set tasks:= t1 t2 t3 t4 t5;
+
+param: skills_programmer: 
+  p1 p2 p3 :=
+c 1 . 1 
+py 1 1 . 
+web 1 1 1;
+
+param:
+        hours  cost_hour:=
+p1       4       5
+p2      10       5
+p3       7       5;
+
+param: lucros:=
+t1 250
+t2 150
+t3 200
+t4 100
+t5 250;
+
+param requer:
+     c   py   web:=
+t1   5    .    2
+t2   .    3    .
+t3   .    6    3
+t4   3    3    3
+t5   2    3    2;

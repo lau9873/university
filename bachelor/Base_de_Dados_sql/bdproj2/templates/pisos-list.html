@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Pisos{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Número</th>
+    <th>Espaços de Leitura</th>
+  </tr>
+
+  {% for piso in pisos %}
+  <tr>
+    <td><a href="/pisos/{{piso.Num}}">{{piso.Num}}</a></td>
+    <td>
+      {{piso.NumEspacoLeitura}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <android.support.design.widget.CoordinatorLayout android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/navigation">
+        <FrameLayout android:id="@+id/content" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <android.support.design.widget.AppBarLayout android:id="@+id/appbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:elevation="0dp">
+            <android.support.p067v7.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:elevation="16dp" app:logo="@null" app:popupTheme="@style/AppTheme.Toolbar.Popup" app:theme="@style/AppTheme.Toolbar" app:title="@string/user_profile" app:titleTextColor="#ffffffff"/>
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <android.support.design.widget.BottomNavigationView android:id="@+id/navigation" android:background="#ffffff" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:elevation="16dp" app:itemIconTint="@color/selector_bottomnavigationbar" app:itemTextColor="@color/selector_bottomnavigationbar" app:menu="@menu/navigation_profile"/>
+</RelativeLayout>

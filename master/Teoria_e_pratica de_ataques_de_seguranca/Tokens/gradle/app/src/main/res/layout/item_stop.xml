@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="16dp" android:paddingRight="16dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="36dp">
+    <View android:id="@+id/icon" android:layout_width="36dp" android:layout_height="match_parent"/>
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body2" android:id="@+id/stop" android:paddingLeft="16dp" android:paddingRight="16dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" android:textColor="#8a000000" android:gravity="center" android:id="@+id/zone" android:layout_width="wrap_content" android:layout_height="match_parent" android:minWidth="40dp"/>
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:gravity="end" android:id="@+id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="56dp"/>
+</LinearLayout>

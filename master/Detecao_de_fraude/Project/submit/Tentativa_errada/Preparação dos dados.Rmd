@@ -1,0 +1,293 @@
+---
+title: "Data preparation"
+author: "Cláudia"
+date: "2023-06-11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(cluster)
+library(dbscan)
+library(factoextra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(imputeTS)
+library(rpart)
+library(class)
+library(neuralnet)
+library(e1071)
+library(ipred)
+library(randomForest)
+library(gbm)
+library(xgboost)
+library(kknn)
+library(tidymodels)
+library(discrim)
+library(klaR)
+library(rpart.plot)
+library(corrplot)
+library(dplyr)
+library(FactoMineR)
+
+```
+
+#Task 1: Data Understanding and Preparation and Descriptive Analytics ##Data Understanding and Preparation Para reunir os dados iniciais:
+
+```{r}
+rm(list = ls())
+setwd("/Users/lau/Desktop/Cláudia/Mestrado/1º ano/2º semestre/Deteção de Fraude/Project")
+dados <- read.csv("train.csv", header = TRUE, sep = ",")
+```
+
+Como o valor -1 em certa colunas representa valores NA, precisei de os substituir por NA.
+
+```{r}
+dados <- dados %>% mutate(prev_address_months_count = na_if(prev_address_months_count, -1), 
+                          current_address_months_count = na_if(current_address_months_count, -1),
+                          bank_months_count = na_if(bank_months_count, -1))
+```
+
+Posso usar a função summary() para obter informações adicionais sobre os dados e identificar se são numéricos ou categóricos. Assim posso converte-los já todos para numéricos.
+
+```{r}
+summary(dados)
+```
+
+```{r}
+dados_alt <- dados
+```
+
+Como a coluna device_fraud_count apenas apresenta valores a 0 decidi retira-la
+
+```{r}
+dados_alt <- dados_alt[, -which(names(dados) == "device_fraud_count")]
+```
+
+Como algumas variaveis sao categoricas, estando assim como characteres, é necessario metê-las em factor.
+
+```{r}
+dados_alt$payment_type <-as.factor(dados_alt$payment_type)
+dados_alt$employment_status <- as.factor(dados_alt$employment_status)
+dados_alt$housing_status <- as.factor(dados_alt$housing_status)
+dados_alt$device_os <- as.factor(dados_alt$device_os)
+dados_alt$source <- as.factor(dados_alt$source)
+```
+
+Para além disso atraves da descrição das variaveis no paper sabemos que as seguinte variaveis tambem sao discretas e categoricas logo tambem as transformei em factor.
+
+```{r}
+dados_alt$email_is_free <- as.factor(dados_alt$email_is_free)
+dados_alt$phone_home_valid <- as.factor(dados_alt$phone_home_valid)
+dados_alt$phone_mobile_valid <- as.factor(dados_alt$phone_mobile_valid)
+dados_alt$has_other_cards <- as.factor(dados_alt$has_other_cards)
+dados_alt$foreign_request <- as.factor(dados_alt$foreign_request)
+dados_alt$keep_alive_session <- as.factor(dados_alt$keep_alive_session)
+dados_alt$is_fraud <- as.factor(dados_alt$is_fraud)
+```
+
+Para lidar com os valores NA comecei por removê-los e de seguida substitui-los, mas primeiro tive de indentificar as colunas com NA's e saber se eram atributos de variveis continuas ou discretas para substituir pela mediana e moda, respetivamente.
+
+```{r}
+summary(dados_alt)
+sapply(dados_alt, class)
+```
+
+```{r}
+percentagem_na <- mean(is.na(dados_alt$prev_address_months_count)) * 100
+print(percentagem_na)
+percentagem_na <- mean(is.na(dados_alt$current_address_months_count)) * 100
+print(percentagem_na)
+percentagem_na <- mean(is.na(dados_alt$employment_status)) * 100
+print(percentagem_na)
+percentagem_na <- mean(is.na(dados_alt$bank_months_count)) * 100
+print(percentagem_na)
+percentagem_na <- mean(is.na(dados_alt$has_other_cards)) * 100
+print(percentagem_na)
+```
+
+Como a percentagem de NA's em prev_address_months_count é muito alta decidi retirar a coluna.
+
+```{r}
+dados_alt <- dados_alt[, -which(names(dados) == "prev_address_months_count")]
+```
+
+Embora algumas das colunas com NA's fossem intergers, estas são variaveis dicretas, logo substitui todos os NA's pela moda de cada coluna.
+
+```{r}
+
+dados_sem_na <- na.omit(dados_alt) 
+dados_sem_na
+##funcao para calcular a moda
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+dados_preenchidos <- dados_alt
+
+mode_1 <- Mode(dados_preenchidos$prev_address_months_count[!is.na(dados_preenchidos$prev_address_months_count)])
+dados_preenchidos$prev_address_months_count[is.na(dados_preenchidos$prev_address_months_count)] <- mode_1
+mode_2 <- Mode(dados_preenchidos$current_address_months_count[!is.na(dados_preenchidos$current_address_months_count)])
+dados_preenchidos$current_address_months_count[is.na(dados_preenchidos$current_address_months_count)] <- mode_2
+mode_3 <- Mode(dados_preenchidos$employment_status[!is.na(dados_preenchidos$employment_status)])
+dados_preenchidos$employment_status[is.na(dados_preenchidos$employment_status)] <- mode_3
+mode_4 <- Mode(dados_preenchidos$bank_months_count[!is.na(dados_preenchidos$bank_months_count)])
+dados_preenchidos$bank_months_count[is.na(dados_preenchidos$bank_months_count)] <- mode_4
+mode_5 <- Mode(dados_preenchidos$has_other_cards[!is.na(dados_preenchidos$has_other_cards)])
+dados_preenchidos$has_other_cards[is.na(dados_preenchidos$has_other_cards)] <- mode_5
+mode_6 <- Mode(dados_preenchidos$source[!is.na(dados_preenchidos$source)])
+dados_preenchidos$source[is.na(dados_preenchidos$source)] <- mode_6
+
+```
+
+De seguida realizei a analise dos componentes principais, no entanto a coluna id nao deve ser tomada em consideraçao para esta analise nem a is_fraud.
+
+```{r}
+ids_sem_na <- dados_sem_na$id
+fraud_sem_na <- dados_sem_na$is_fraud
+
+ids_preenchidos <- dados_preenchidos$id
+fraud_preenchidos <- dados_preenchidos$is_fraud
+
+dados_sem_na2 <- subset(dados_sem_na, select = -c(id, is_fraud))
+dados_preenchidos2 <- subset(dados_preenchidos, select = -c(id, is_fraud))
+
+
+
+```
+
+Para fazer PCA e SVD é neccessario que todas colunas sejam numericas
+
+```{r}
+
+
+colunas_nao_numericas <- sapply(dados_sem_na2, function(col) !is.numeric(col))
+colunas_categoricas <- names(dados_sem_na2)[colunas_nao_numericas]
+dados_one_hot <- dados_sem_na2 %>%
+  dplyr::select(all_of(colunas_categoricas)) %>%
+  mutate_all(as.factor) %>%
+  model.matrix(~.-1, data = .)
+dados_completos <- bind_cols(dados_sem_na2 %>% dplyr::select(-all_of(colunas_categoricas)), dados_one_hot)
+
+reducao_pca <- PCA(dados_completos, graph = FALSE)
+reducao_pca <- as.data.frame(reducao_pca$ind$coord[, 1:5])
+
+reducao_svd <- svd(dados_completos)
+reducao_svd <- as.data.frame(reducao_svd$u[, 1:40])
+print(reducao_pca)
+print(reducao_svd)
+
+
+colunas_nao_numericas2 <- sapply(dados_preenchidos2, function(col) !is.numeric(col))
+colunas_categoricas2 <- names(dados_preenchidos2)[colunas_nao_numericas2]
+dados_one_hot2 <- dados_preenchidos2 %>%
+  dplyr::select(all_of(colunas_categoricas2)) %>%
+  mutate_all(as.factor) %>%
+  model.matrix(~.-1, data = .)
+dados_completos2 <- bind_cols(dados_preenchidos2 %>% dplyr::select(-all_of(colunas_categoricas2)), dados_one_hot2)
+reducao_pca_p <- PCA(dados_completos2, graph = FALSE)
+reducao_pca_p <- as.data.frame(reducao_pca_p$ind$coord[, 1:5])
+
+reducao_svd_p <- svd(dados_completos2)
+reducao_svd_p <- as.data.frame(reducao_svd_p$u[, 1:40])
+print(reducao_pca_p)
+print(reducao_svd_p)
+
+
+
+```
+
+Agora ja posso voltar a juntar a coluna is_fraud ao meus dados alterados.
+
+```{r}
+dados_sem_na22 <- cbind(dados_sem_na2, is_fraud = fraud_sem_na)
+dados_preenchidos22 <- cbind(dados_preenchidos2, is_fraud = fraud_preenchidos)
+
+reducao_pca2 <- cbind(reducao_pca, is_fraud = fraud_sem_na)
+reducao_svd2 <- cbind(reducao_svd, is_fraud = fraud_sem_na)
+reducao_pca_p2 <- cbind(reducao_pca_p, is_fraud = fraud_preenchidos)
+reducao_svd_p2 <- cbind(reducao_svd_p, is_fraud = fraud_preenchidos)
+
+
+```
+
+##Descriptive Analytics Para fazer a análise descritiva dos dados, podemos fazer uma análise estatística ou visual, através de gráficos. \##### Descriptive Statistics
+
+```{r}
+summary(dados_sem_na22)
+summary(dados_preenchidos22)
+summary(reducao_pca2)
+summary(reducao_svd2)
+summary(reducao_pca_p2)
+summary(reducao_svd_p2)
+
+
+```
+
+#####Data Visualization Utilizei histograms e boxplots para visualizar variáveis discretas, enquanto as continuas utilizei graficos de densidade. Comparando os dados fraudulentos e não fraudulentos, podemos obter informações sobre as distribuições das variáveis. No entanto apenas estes gráficos me pareceram dar informações úteis.
+
+```{r}
+ggplot(dados_alt, aes(x = name_email_similarity, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Distribuição - name_email_similarity",
+       x = "name_email_similarity",
+       y = "Count",
+       fill = "Fraudulento") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados_alt, aes(x = credit_risk_score, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Credit Risk Score", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados_alt, aes(x = zip_count_4w, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Zip Count in 4 Weeks", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+```
+
+Para fazer a correlação entre as colunas de cada processamento de dados, podemos fazer um heatmap.
+
+```{r}
+dados_featured_lista <- list(reducao_pca, reducao_pca_p,
+                             reducao_svd, reducao_svd_p)
+dados_featured_nome_lista <- c("dados com redução PCA e valores NA removidos",  
+                               "dados com redução PCA e valores NA preenchidos",
+                               "dados com redução SVD e valores NA removidos",
+                               "dados com redução SVD e valores NA preenchidos")
+
+for (i in 1:4) {
+  matriz_cor <- cor(dados_featured_lista[[i]])
+  print(ggplot(data = reshape2::melt(matriz_cor), aes(x = Var1, y = Var2, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient(low = "blue", high = "red") +
+    theme_minimal() +
+    labs(title = paste("Matriz de Correlação de", dados_featured_nome_lista[i])))
+}
+
+```
+
+```{r}
+for (i in 1:4) {
+  res <- dados_featured_lista[[i]] %>% cor()
+
+  corrplot(res, type = "lower", method = "number", number.cex = 0.5, diag = FALSE, main = paste("Matriz de Correlação de", dados_featured_nome_lista[i]))
+  corrplot.mixed(res, lower = "circle", upper = "number", number.cex = 0.5, tl.col = "black", tl.cex = 0.5, main = paste("Matriz de Correlação de", dados_featured_nome_lista[i]))
+}
+
+```
+
+Para dividir este trabalho em preparação de dados e modelação guardei cada um dos dados featured num ficheiro para poder importar no outro notebook.
+
+```{r}
+dados_featured_lista_com_fraud <- list(dados_sem_na22,
+                                       dados_preenchidos22,
+                                       reducao_pca2, 
+                                       reducao_pca_p2, 
+                                       reducao_svd2, 
+                                       reducao_svd_p2)
+saveRDS(dados_featured_lista_com_fraud, "dados_featured.rds")
+
+```

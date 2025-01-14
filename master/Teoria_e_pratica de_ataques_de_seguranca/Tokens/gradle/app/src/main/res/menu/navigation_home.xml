@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_anda_a" android:id="@+id/trip" android:title="@string/navigation_trip"/>
+    <item android:icon="@drawable/ic_history_white_24dp" android:id="@+id/history" android:title="@string/navigation_history"/>
+    <item android:icon="@drawable/ic_euro_symbol_black_24dp" android:id="@+id/fares" android:title="@string/navigation_fares"/>
+    <item android:icon="@drawable/ic_inspection_white" android:id="@+id/inspection" android:title="@string/navigation_inspection"/>
+</menu>

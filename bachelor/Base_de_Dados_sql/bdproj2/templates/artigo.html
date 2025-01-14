@@ -1,0 +1,115 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ artigo.Titulo }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Artigo Info</h2>
+
+<p>
+  <b>Código: </b>{{ artigo.Codigo }}
+</p>
+
+<p>
+  <b>Tipo: </b>{{artigo.Tipo }}
+</p>
+
+ {% if artigo.Título %}
+<p>
+  <b>Titulo: </b>{{artigo.Titulo}}
+</p>
+{% endif %}
+
+{% if artigo.Autor %}
+<p> 
+  <b>Autor: </b>{{artigo.Autor}}
+</p>
+{% endif %}
+
+{% if artigo.Volume %}
+<p> 
+  <b> Volume: </b>{{artigo.Volume}}
+</p>
+{% endif %}
+
+<p>
+  <b> Localização </b>
+</p>
+<p>
+  <b> Piso:</b>{{localizacao.Localizacao}}
+  {% if localizacao.Seccao %}
+  <b> Secção:</b>{{localizacao.Seccao}}
+  {% endif %}
+  {% if localizacao.Estante %}
+  <b> Estante:</b>{{localizacao.Estante}}
+  {% endif %}
+</p>
+
+{% if artigo.Area %}
+<p>
+  <b>Áreas Científicas: </b><ul>
+    {% for a in areaCientifica %}      
+      <li>{{a.Area}}</li>
+    {% endfor %}
+    </ul>
+</p>
+{% endif %}
+
+{% if clienteQueRequisitou.Nome %}
+<p>
+  <b>Requisitado Por: </b><ul>
+    {% for c in clienteQueRequisitou %}      
+    <li><a href="/clientes/{{ c.NumMec }}">{{c.Nome }}</a></li>
+    {% endfor %}
+  </ul>
+</p>
+{% endif %}
+{% if recomendadoPorCadeira %}
+  <p>
+  <b>Recomendado Por</b>
+  </p>
+  <table> 
+    <tr>
+      <th>Nome Cadeira</th>
+      <th>Código</th>
+      <th>Departamento</th>
+      <th>Grau de Obrigatoriedade</th>
+       <th>Temas</th>
+    </tr>
+    {% for cadeira in recomendadoPorCadeira %}
+    <tr>
+      <td>{{cadeira.Nome}}</td>
+      <td>{{cadeira.Codigo}}</td>
+      <td>{{cadeira.Departamento}}</td>
+      <td>{{cadeira.GrauObrigatoriadade}}</td>
+      <td>{{cadeira.Temas}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% if usadoPorEvento %}
+ <p>
+ <b>Usado Por </b>
+ </p>
+ <table> 
+   <tr>
+     <th>Nome Evento</th>
+     <th>Código</th>
+     <th>Tipo de Evento</th>
+     <th>Motivo</th>
+   </tr>
+   {% for evento in usadoPorEvento %}
+   <tr>
+     <td>{{evento.Nome_Evento}}</td>
+     <td>{{evento.Cod_do_Evento}}</td>
+     <td>{{evento.Tipo_Evento}}</td>
+     <td>{{evento.Motivo_do_Uso}}</td>
+   </tr>
+   {% endfor %}
+ </table>
+{% endif %}
+{% endblock %}
+

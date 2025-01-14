@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:paddingTop="8dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="24dp" android:paddingEnd="24dp">
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Subhead" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/trip_action_automaticEnd_accept"/>
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Button" android:id="@+id/time" android:paddingTop="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAlignment="textEnd"/>
+</LinearLayout>

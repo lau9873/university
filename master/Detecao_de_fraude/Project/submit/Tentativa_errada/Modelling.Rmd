@@ -1,0 +1,204 @@
+---
+title: "Modelling"
+author: "Cláudia"
+date: "2023-06-11"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(cluster)
+library(dbscan)
+library(factoextra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(imputeTS)
+library(rpart)
+library(class)
+library(neuralnet)
+library(e1071)
+library(ipred)
+library(randomForest)
+library(gbm)
+library(xgboost)
+library(kknn)
+library(tidymodels)
+library(discrim)
+library(klaR)
+library(rpart.plot)
+library(pROC)
+library(caret)
+
+rm(list = ls())
+```
+
+##Task 2: Predictive Modelling 
+Primeiro comecei por importar os dados featured.
+```{r}
+dados_featured_lista <- readRDS("dados_featured.rds")
+dados_featured_nome_lista <- c("dados com valores NA removidos", 
+                                 "dados com valores NA preenchidos", 
+                                 "dados com redução PCA e valores NA removidos", 
+                                 "dados com redução PCA e valores NA preenchidos",
+                                 "dados com redução SVD e valores NA removidos", 
+                                 "dados com redução SVD e valores NA preenchidos")
+
+
+```
+
+Para fazer a previsão de se é fraudulento ou não, utilizei vários modelos que foram: Árvores de Decisão, K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Random Forest e Gradient Boosting Machines (GBM). Assim, utilizei cada modelo para cada um dos datasets com as colunas modificadas, sendo estes: dados com valores NA removidos, dados com valores NA preenchidos, dados com redução PCA e valores NA removidos, dados com redução PCA e valores NA preenchidos, dados com redução SVD e valores NA removidos, dados com redução SVD e valores NA preenchidos. Inicialmente, realizei cada teste para diferentes números de componentes dos PCA e SVD, no entanto, a variação deste parametro não me fazia alterar as conclusões retiradas sobre o melhor modelo a aplicar. Assim, para medir a precisão de cada modelo com as diferentes percentagens dos dados que podiam ser cada um dos 6 datasets calculei a percentagem de erro de cada previsao. Embora tenha tido percentagens de erro a 0% isto indicava que estava a fazer overfitting, de modo a tentar contornar isso, realizei testes para diferentes percentagens dos dataset original. 
+
+```{r}
+percentagem_total_lista <- c(0.5, 0.6, 0.7, 0.8,0.85, 0.9)
+matriz <- array(0, dim = c(6, 5, 6))
+matriz_auc <- array(0, dim = c(6, 5, 6)) 
+
+for (f in 1:6){
+  dados_featured <- dados_featured_lista[[f]]
+  dados_featured_nome <- dados_featured_nome_lista[f]
+  print(paste("Tipos de featuring usada: ",dados_featured_nome))
+  for (p in 1:6){
+      # Divisão em conjunto de treino e teste
+      per <- percentagem_total_lista[p]
+      set.seed(1234)
+      split_dados <- dados_featured %>% initial_split(prop=per,is_fraud)
+      dados_treino <- training(split_dados)
+      dados_teste <- testing(split_dados)
+      dados_treino <- as.data.frame(dados_treino)
+      dados_teste <- as.data.frame(dados_teste)
+    
+    
+    
+    
+    
+    percentagem_erro_AD <- -1
+    percentagem_erro_KNN <- -1
+    percentagem_erro_NB <- -1
+    percentagem_erro_NN <- -1
+    percentagem_erro_SVM <- -1
+    percentagem_erro_RF <- -1
+    percentagem_erro_GBM <- -1
+    percentagem_erro_XGB <- -1
+    
+    auc_AD <- -1
+    auc_KNN <- -1
+    auc_NB <- -1
+    auc_NN <- -1
+    auc_SVM <- -1
+    auc_RF <- -1
+    auc_GBM <- -1
+    auc_XGB <- -1
+    
+    
+    
+    #Árvores de Decisão
+    modelo <- rpart(is_fraud ~ ., data = dados_treino, method = "class")
+    previsao <- predict(modelo, newdata = dados_teste, type = "class")
+    resultado <- data.frame(dados_teste, previsao)
+    percentagem_erro_AD <- sum(resultado$is_fraud != resultado$previsao) / nrow(resultado) * 100
+    roc_obj <- roc(resultado$is_fraud, as.numeric(resultado$previsao))
+    auc_AD <- auc(roc_obj)
+ 
+    rm(previsao)
+    rm(resultado)
+    
+    #KNN
+    model_knn <- nearest_neighbor(mode="classification",neighbors=11)
+    knn_fit <- model_knn %>% fit(is_fraud ~ ., data = dados_treino)
+    resultado <- dados_teste %>% dplyr::select(is_fraud) %>% 
+      bind_cols(predict(knn_fit,dados_teste)) %>% 
+      bind_cols(predict(knn_fit,dados_teste,type="prob"))
+    percentagem_erro_KNN <- sum(resultado$is_fraud != resultado$.pred_class) /   nrow(resultado) * 100
+    roc_obj <- roc(resultado$is_fraud, as.numeric(resultado$.pred_class))
+    auc_KNN <- auc(roc_obj)
+    
+    #SVM 
+    modelo_svm <- svm(is_fraud ~ ., data = dados_treino, type = "C")
+    previsao <- predict(modelo_svm, newdata = dados_teste)
+    resultado <- cbind(dados_teste, previsao)
+    percentagem_erro_SVM <- sum(resultado$is_fraud != resultado$previsao) / nrow(resultado) * 100
+    roc_obj <- roc(resultado$is_fraud, as.numeric(resultado$previsao))
+    auc_SVM <- auc(roc_obj)
+  
+    #Random Forest
+    dados_treino$is_fraud <- as.factor(dados_treino$is_fraud)
+    dados_teste$is_fraud <- as.factor(dados_teste$is_fraud)
+    model_rf <- rand_forest(mode = "classification", trees = 100) %>% 
+      set_engine("ranger", importance = "impurity")
+    rf_fit <- model_rf %>%
+      fit(is_fraud ~ ., data = dados_treino)
+    resultado <- dados_teste %>%
+      dplyr::select(is_fraud) %>%
+      add_column(predict(rf_fit, dados_teste))
+    percentagem_erro_RF <- sum(dados_teste$is_fraud != resultado$.pred_class) / nrow(resultado) *100
+    roc_obj <- roc(resultado$is_fraud, as.numeric(resultado$.pred_class))
+    auc_RF <- auc(roc_obj)
+  
+    #GBM
+    dados_treino$is_fraud <- as.numeric(as.factor(dados_treino$is_fraud))-1
+    dados_teste$is_fraud <- as.numeric(as.factor(dados_teste$is_fraud))-1
+    modelo_boosting <- gbm(is_fraud ~ ., data = dados_treino, distribution = "bernoulli", n.trees = 100)
+    previsao <- predict(modelo_boosting, newdata = dados_teste, n.trees = 50, type = "response")
+    previsao_classes <- ifelse(previsao > 0.5, 1, 0)
+    resultado <- cbind(dados_teste, previsao = previsao_classes)
+    percentagem_erro_GBM <- sum(resultado$is_fraud != resultado$previsao) / nrow(resultado) * 100
+    roc_obj <- roc(resultado$is_fraud, as.numeric(resultado$previsao))
+    auc_GBM <- auc(roc_obj)
+
+    print(paste("Percentagem da amostra:", per*100, "%"))
+
+percentagens_de_erro_lista <- list(percentagem_erro_AD, percentagem_erro_KNN,
+                                   percentagem_erro_SVM, percentagem_erro_RF,
+                                   percentagem_erro_GBM)
+percentagem_erro_nome_lista <- c("AD", "KNN",  "SVM", "RF", "GBM")
+areas_lista<-list(auc_AD, auc_AD, auc_KNN, auc_SVM, auc_RF, auc_GBM)
+    
+      for (m in 1:5){
+        percentagens_de_erro <- percentagens_de_erro_lista[[m]]
+        AUC <- areas_lista[[m]]
+        percentagem_erro_nome <-percentagem_erro_nome_lista[m]
+        print(paste("Percentagem de erro de", percentagem_erro_nome, ": ",percentagens_de_erro))
+        matriz[f, m, p] <- percentagens_de_erro
+        matriz_auc[f, m, p] <- AUC
+        }
+  }   
+      
+}
+```
+
+```{r}
+cores <- rainbow(ncol(matriz))
+for (i in 1:nrow(matriz)) {
+  dados <- t(matriz[i, , ])
+  matplot(percentagem_total_lista, dados, type = "l", col = cores, xlab = "Percentagem dos dados para treino",
+          ylab = "Percentagem de erros", main = paste("Feature", dados_featured_nome_lista[i]))
+  legend("topright", legend = percentagem_erro_nome_lista, col = cores, lty = 1)
+}
+
+cores <- rainbow(ncol(matriz_auc))
+for (i in 1:nrow(matriz_auc)) {
+  dados <- t(matriz_auc[i, , ])
+  matplot(percentagem_total_lista, dados, type = "l", col = cores, xlab = "Percentagem dos dados para treino",
+          ylab = "AUC(Area Under the Curve)", main = paste("Feature", dados_featured_nome_lista[i]))
+  legend("topright", legend = percentagem_erro_nome_lista, col = cores, lty = 1)
+}
+```
+
+
+```{r}
+dados_featured_lista <- readRDS("dados_featured.rds")
+dados_featured_nome_lista <- c("dados com valores NA removidos", 
+                                 "dados com valores NA preenchidos", 
+                                 "dados com redução PCA e valores NA removidos", 
+                                 "dados com redução PCA e valores NA preenchidos",
+                                 "dados com redução SVD e valores NA removidos", 
+                                 "dados com redução SVD e valores NA preenchidos")
+dados<- dados_featured_lista[[1]]
+
+```
+
+##Conclusao
+Embora os modelos indicassem overfitting a accuracy era 0.5 em todos os casos, já que como havia muitas mais linhas onde is_fraud=0, assim os modelos preveram sempre que os testes eram 0 também. De modo a contornar, isso criei outro notebook onde trabalho logo com o dataset dos dados e dos testes para poder fazer o featuring dos dados conjunto.
+

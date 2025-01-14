@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:fitsSystemWindows="true" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent">
+    <android.support.p065v4.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.constraint.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+            <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="0" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0" app:layout_constraintTop_toBottomOf="0" style="?android:attr/progressBarStyle"/>
+            <android.support.p067v7.widget.RecyclerView android:id="@+id/list" android:paddingTop="4dp" android:paddingBottom="4dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <android.support.p067v7.widget.RecyclerView android:id="@+id/profileList" android:paddingTop="4dp" android:paddingBottom="4dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/list"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.p065v4.widget.NestedScrollView>
+    <android.support.design.widget.AppBarLayout android:id="@+id/appbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <android.support.p067v7.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:elevation="16dp" app:layout_scrollFlags="0x5" app:logo="@null" app:popupTheme="@style/AppTheme.Toolbar.Popup" app:theme="@style/AppTheme.Toolbar" app:title="@string/user_profile" app:titleTextColor="#ffffffff"/>
+    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.CoordinatorLayout>

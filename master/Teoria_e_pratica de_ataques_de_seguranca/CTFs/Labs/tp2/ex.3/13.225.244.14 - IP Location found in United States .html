@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://www.ip-tracker.org/lookup.php?ip=13.225.244.14 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>13.225.244.14 - IP Location found in   United States - ISP: AMAZON-02</title>
+<meta name="description" content="IP lookup for 13.225.244.14 - Hostname: server-13-225-244-14.lis50.r.cloudfront.net - Organization: AMAZON-02, Location:   United States">
+<meta name="keywords" content="13.225.244.14, IP Lookup">
+<link rel="canonical" href="https://www.ip-tracker.org/lookup.php?ip=13.225.244.14">
+<!--<base href="https://www.ip-tracker.org">--><base href=".">
+<link href="./13.225.244.14 - IP Location found in United States _files/bsnormalize.css" rel="stylesheet" type="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://www.ip-tracker.org/favicon.ico">
+<link href="./13.225.244.14 - IP Location found in United States _files/style.css" rel="stylesheet" type="text/css">
+<script src="./13.225.244.14 - IP Location found in United States _files/f(8).txt"></script><script src="./13.225.244.14 - IP Location found in United States _files/f(9).txt"></script><script src="./13.225.244.14 - IP Location found in United States _files/f(10).txt" id="google_shimpl"></script><script async="" src="./13.225.244.14 - IP Location found in United States _files/analytics.js"></script><script type="text/javascript">
+        function noSpace() {
+            var txtbox = document.getElementById('txtOne');
+            txtbox.value = txtbox.value.replace(/\s/g, "");
+txtbox.value = txtbox.value.replace(/^http(s)*:\/\//i, "");
+txtbox.value = txtbox.value.replace(/\//g,"");
+
+        }
+    </script>
+<script language="JavaScript" type="text/javascript">
+<!--
+if (window != top) top.location.href = location.href;
+// -->
+</script>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33688304-1', 'ip-tracker.org');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="./13.225.244.14 - IP Location found in United States _files/responsive.css" rel="stylesheet" type="text/css">
+<link href="./13.225.244.14 - IP Location found in United States _files/ip-lookup.css" rel="stylesheet" type="text/css">
+<script src="./13.225.244.14 - IP Location found in United States _files/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+// Passive event listeners
+jQuery.event.special.touchstart = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+jQuery.event.special.touchmove = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+            </script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    // main function for backbtn positioning on scroll/resize
+    function setBackButton() {
+        
+        // get window width, so we don't setup btn on below 1024px
+        // because there is room sideways
+        var vw = $(window).width();
+        // 1024, desktop kicks in
+        var bp = 1024;
+        
+        // timeout needed for chrome url bar showing slowly
+        setTimeout(function() {
+
+            var viewportH = $(window).height();
+            // last bottom el height
+            var bottomElH = $('.backbtn-btm').height();
+            // bottom el's top vs. window top distance
+            var peek = $('.backbtn-btm').position().top - $(window).scrollTop();
+            var offset = 6;
+
+            if ($(window).scrollTop() > 50) {
+
+                // show btn
+                $('#back-to-top').fadeIn();
+
+                // take the viewport height, compare it to el's top/peek
+                // if v-height is greater than peek, it means
+                // el's top is peeking into viewport
+                // so we need to add bigger bottom btn to keep it above it
+                // so we set back btn bottom to that difference + some margins
+                if (viewportH >= peek) {
+                    //console.log('peeks', viewportH, peek, bottomElH, viewportH - peek, viewportH - peek >= Math.round(bottomElH), (viewportH - peek) - bottomElH)
+                    // raise button on small screens only
+                    if (vw < bp) {
+                        $('#back-to-top').css('bottom', Math.round(viewportH - peek + offset));
+                    } else {
+                        $('#back-to-top').css('bottom', '16px')
+                    }
+                } else {
+                    // set regular distance from bottom
+                    $('#back-to-top').css('bottom', '16px')
+                }
+
+
+            } else {
+                // hide btn
+                $('#back-to-top').fadeOut();
+            }
+        }, 100);
+    }
+
+
+    // listeners
+    $(window).resize(function() {
+        // call backbtn setup on window resize
+        setBackButton();
+    });
+
+    // call backbtn setup on window scroll
+    // jq scrollend extension
+    $.fn.scrollEnd = function(callback, timeout) {
+
+        $(this).scroll(function() {
+            var $this = $(this);
+            if ($this.data('scrollTimeout')) {
+                clearTimeout($this.data('scrollTimeout'));
+            }
+            $this.data('scrollTimeout', setTimeout(callback, timeout));
+        });
+    };
+    // call backbtn setup on window scroll-end
+    $(window).scrollEnd(setBackButton);
+
+    // scroll body to top on backbtn click
+    $('#back-to-top').click(function() {
+
+        $('body,html').animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+    //ip-tools dropdown
+    var open = false;
+    var touched = false;
+    var focus = false;
+    var hover = false;
+    var iptoolslk = $('#iptoolslk');
+    var tools = $('#tools');
+
+
+    // first touch opens dropdown, second goes to location
+    iptoolslk.on('touchstart', function(e) {
+        if (touched) {
+            return;
+        } else {
+            e.preventDefault();
+            tools.show();
+            touched = true;
+        }
+    });
+
+
+    iptoolslk.on('click mouseenter', function() {
+
+        open = true;
+        hover = true;
+        tools.show();
+
+    });
+    iptoolslk.mouseleave(function() {
+
+        setTimeout(function() {
+            if (open && focus) {
+                hover = false;
+                return;
+            } else {
+                open = false;
+                tools.hide();
+
+            }
+        }, 700)
+
+        console.log('mouseleave', open)
+    });
+
+
+    tools.mouseenter(function() {
+        focus = true;
+        open = true;
+    });
+    tools.mouseleave(function() {
+        open = focus = false;
+        setTimeout(function() {
+            if (!hover) tools.hide();
+        }, 500);
+    });
+
+
+
+    $('.close').click(function() {
+        tools.hide();
+        open = touched = false;
+    });
+
+});
+
+</script>
+<meta http-equiv="origin-trial" content="A+cA2PUOfIOKAdSDJOW5CP9ZlxONy1yu+hqAq72zUtKw4rLdihqRp6Nui/jUyCyegr+BUtH+C+Elv0ufn05yBQEAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A+zsdH3aNZT/bkjT8U/o5ACzyaeNYzTvtoVmwf/KOilfv39pxY2AIsOwhQJv+YnXp98i3TqrQibIVtMWs5UHjgoAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxceVEhIegcDEHqLXFQ2+vPKqzCppoJYsRCZ/BdfVnbM/sUUF2BXV8lwNosyYjvoxnTh2FC8cOlAnA5uULr/zAUAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script async="" src="./13.225.244.14 - IP Location found in United States _files/ca-pub-7304917892182792"></script><link rel="preload" href="./13.225.244.14 - IP Location found in United States _files/f(11).txt" as="script"><script type="text/javascript" src="./13.225.244.14 - IP Location found in United States _files/f(11).txt"></script><link rel="preload" href="./13.225.244.14 - IP Location found in United States _files/f(12).txt" as="script"><script type="text/javascript" src="./13.225.244.14 - IP Location found in United States _files/f(12).txt"></script><script async="" src="./13.225.244.14 - IP Location found in United States _files/AGSKWxUE6i9VxhZy80HpCC7IvPKiczimOAl96ifsdi8NAywP13Rf9npleTQGoYrEZCd6554uTs4Xy-ZFT8WD-JNCM-s="></script><script async="" src="./13.225.244.14 - IP Location found in United States _files/AGSKWxWwnYfhDy3P6SxrLg50OLhXpIlJ3P5C1oZv4IPg2zPwFvUB4wB8hz4Hf59oxTmuZa8KwRHPiJUa7hM-Clmko64RL_mRqLKmbLUa3p7RaE3E09qs6Ww0SYPnH1mK1xdHAeIlYEqGrw=="></script><meta http-equiv="origin-trial" content="A+cA2PUOfIOKAdSDJOW5CP9ZlxONy1yu+hqAq72zUtKw4rLdihqRp6Nui/jUyCyegr+BUtH+C+Elv0ufn05yBQEAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A+zsdH3aNZT/bkjT8U/o5ACzyaeNYzTvtoVmwf/KOilfv39pxY2AIsOwhQJv+YnXp98i3TqrQibIVtMWs5UHjgoAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxceVEhIegcDEHqLXFQ2+vPKqzCppoJYsRCZ/BdfVnbM/sUUF2BXV8lwNosyYjvoxnTh2FC8cOlAnA5uULr/zAUAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script async="" src="./13.225.244.14 - IP Location found in United States _files/AGSKWxWIDwCq_TGgIw_cLMSsi14gE7C4ujFOmL8jJxJrkxaDhdYlwH7nFhLtJW2oWCu_JFrfDrfo-QWXuUYDlOWYvFqd2N78n6e4DDt9_EVAncKEsKCLqG4XN4ulSuvTxjy8Cq9ARZGbFA=="></script><script async="" src="./13.225.244.14 - IP Location found in United States _files/AGSKWxXh4gL8sejpjWOy3rS-qijcF3LbwYhiAcZ_4WaS3OVhG7sSwgArPqxciEwujb20ytuqPEU1WVXZ8EJ48A-IgyX4ElOX-cyhiv8T52uEEl8Usk7bJKDLT-iYRnRhGzTMvFjNnMuYSA=="></script></head>
+<body aria-hidden="false">
+
+<div class="wrapper" style="height: auto !important;">
+<div id="content" style="height: auto !important;">
+<script type="text/javascript">
+(function($){
+  // close nav on any click except
+  $(document).ready(function() {
+    $(document).on('click', function(e) {
+      if($('.navbar-collapse').css('display') == 'block') {
+          $('.navbar-collapse').collapse('hide');
+      }
+    });
+  });
+})(jQuery);
+
+</script>
+<script async="" src="./13.225.244.14 - IP Location found in United States _files/f(13).txt" crossorigin="anonymous" type="text/javascript" data-checked-head="true"></script>
+<div id="header">
+<button type="button" class="navv navbar-toggle collapsed" data-toggle="collapse" data-target="#bar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<div id="title">IP Tracker</div>
+<div id="bar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+<ul id="nav" class="nav navbar-nav">
+<ul id="tools">
+<button class="close">×</button>
+<li><a class="first" href="https://www.ip-tracker.org/reverse-ip.php">Reverse IP</a></li>
+<li><a href="https://www.ip-tracker.org/ip-to-location.php">IP To Location</a></li>
+<li><a href="https://www.ip-tracker.org/ip-to-country.php">IP To Country</a></li>
+<li><a href="https://www.ip-tracker.org/domain-country.php">Domain To Country</a></li>
+<li><a href="https://www.ip-tracker.org/domain-to-location.php">Domain To Location</a></li>
+<li><a href="https://www.ip-tracker.org/ip-to-host.php">IP To Host</a></li>
+<li><a href="https://www.ip-tracker.org/domain-to-ip.php">Domain To IP</a></li>
+<li><a href="https://www.ip-tracker.org/blacklist-check.php">Blacklist Check</a></li>
+<li><a href="https://www.ip-tracker.org/internet-speed.php">Internet Speed</a></li>
+<li><a href="https://www.ip-tracker.org/geolocation.php">IP Geolocation</a></li>
+</ul>
+<li><a class="" href="https://www.ip-tracker.org/ip-tools.php" id="iptoolslk">IP Tools <span class="nav-chevron"></span></a></li>
+<li><a class="" href="https://www.ip-tracker.org/email/finder.php">Email Finder</a></li>
+<li><a class="" href="https://www.ip-tracker.org/email-lookup.php">Email Lookup</a></li>
+<li><a class="" href="https://www.ip-tracker.org/lookup/whois.php">Whois Lookup</a></li>
+<li><a class="selected" href="https://www.ip-tracker.org/lookup.php">IP Lookup</a></li>
+<li><a class="" href="https://www.ip-tracker.org/">IP Tracker</a></li>
+</ul>
+</div>
+<div id="slogan">Lookup, Trace, Track, Find an IP Location with IP tracking technology
+and IP tracer tool from IP-Tracker.org</div>
+</div> 
+<div id="path">
+</div>
+<div id="maincontent" style="height: auto !important;">
+<a href="https://www.ip-tracker.org/">IP Tracker</a> » <a href="https://www.ip-tracker.org/lookup.php">IP Lookup</a> » <strong>13.225.244.14</strong>
+<div class="ad-1-drzac-links" style="margin-bottom:14px">
+
+<ins class="adsbygoogle" style="display: block; text-align: center; height: 280px;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7304917892182792" data-ad-slot="8142446181" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 280px; width: 336px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:336px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./13.225.244.14 - IP Location found in United States _files/ads.html" data-google-container-id="a!2" data-google-query-id="CO-etILJr_oCFVJmFQgdciwGCA" data-load-complete="true"></iframe></div></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<h1>What is the Location for IPv4 13.225.244.14?</h1>
+<p>
+Our tracking system has found the location of IP <span style="text-decoration-line: underline; text-decoration-style: solid;">13.225.244.14</span> at latitude 37.751 and longitude -97.822 in the United States <img width="16px" height="11px" src="./13.225.244.14 - IP Location found in United States _files/us.webp" alt="Location traced in the United States&gt; (US)">
+</p>
+<p>
+(<mark>Did you know that</mark> the United States is a country in North America?
+And here we will state a couple of interesting facts about that continent.
+The North America continent is one of the seven continents of the world, covering an area of 24,709,000 km² or 9,540,000 square miles with a population density of 22.9 per km² or 159.3 per square mile
+and that the average life expectancy of females is 81 years and men 75 years. In percentage terms, the North America continent has a population of 580 million, which is 7.6% of the world's total population.)</p><p></p>
+<p>
+The lookup details for the requested IP are purely informative.
+Although we try to be precise with the lookup location and other details regarding a certain IP or website we cannot guarantee 100% accuracy.
+Namely, in general, IP block ranges change the owner (ISP / Organization) on a daily basis, which contributes to the imbalance in detection.
+<br>
+But in most cases, at least when it comes to the USA, Australia, Canada and Europe, you will be able to get a credible result and information
+from our IP lookup and know where the device or person behind the requested IP address is geolocated.
+</p>
+
+<p>
+Also to remind you that if you want to find the exact physical geolocation of your own device
+(note that your explicit permission is required for this method)
+please check out:
+<a href="https://www.ip-tracker.org/geolocation.php">IP Geolocation</a>
+</p>
+<h2>Are you looking for the exact physical address for IP 13.225.244.14 ?</h2>
+<p>
+You will probably not know the exact physical address of an Internet device (mobile phone, computer, etc.), website, or the person you're trying to locate,
+but in most cases you will know the region (district), city , postal address, and very often accompanying details such as area, or metro, along with latitude and longtitude -97.822,
+which is quite enough information when you are doing your own investigation and you also want to see
+those details on the visual map as well.
+</p>
+<h2></h2>
+<p style="margin-top:7px">
+Regardless of whether you are looking for as much exact information as possible, regarding IPv4, IPv6 address or domain,
+with the possibility of insight into the visual display of the traced geolocation on the Map, our advice is to always
+check your results through our <a href="https://www.ip-tracker.org/lookup/whois.php" title="Here you can research Whois information related to the domain and its owner">Whois Lookup tool</a>
+that will reveal a lot of information about the internet service provider and the organization behind the requested domain or IP
+including email address, phone number and the physical location of the owner of the given IP address or website.
+</p>
+<div class"reklo-in-main"="">
+</div>
+<p class="input-text" style="margin-top:25px;  clear: both; margin-bottom:-10px; margin-left:18%">
+<em>Enter an IP or Domain to search its location and additional information.</em>
+</p>
+<form method="GET" action="https://www.ip-tracker.org/lookup.php" style="height: auto !important;">
+<table class="wrapper-table" width="780" cellpadding="0" cellspacing="3" style="height: auto !important;">
+<tbody><tr>
+<td align="center" id="inputiny">
+<input type="text" name="ip" class="inputiny" id="txtOne" value="13.225.244.14" size="80" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.value=&#39;&#39;">
+</td>
+</tr>
+<tr>
+<td align="center">
+<input type="submit" class="inputinyext" value="Get An IP / Domain Info" onclick="if (!window.__cfRLUnblockHandlers) return false; noSpace()">
+</td>
+</tr>
+<tr style="height: auto !important;">
+<td style="height: auto !important;">
+<br>
+<div class"reklo-in-main"="">
+
+<ins class="adsbygoogle" style="display: block; height: 280px;" data-full-width-responsive="true" data-ad-client="ca-pub-7304917892182792" data-ad-slot="7844641759" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_2_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 280px; width: 672px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:672px;height:280px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="672" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./13.225.244.14 - IP Location found in United States _files/ads(1).html" data-google-container-id="a!3" data-google-query-id="CPeEtILJr_oCFaxUFQgdHJ4Mkw" data-load-complete="true"></iframe></div></ins>
+<script type="text/javascript">
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+</script>
+</div>
+</td>
+</tr>
+</tbody></table>
+</form>
+<table class="wrapper-table" width="780" cellpadding="0" cellspacing="7" style="border-style:solid; border-width:1px; border-color:#666666">
+<tbody><tr class="rslts-wrapper">
+<td valign="top" align="left" width="100%" class="lookup-ad-holder rslts-col">
+
+<link rel="stylesheet" href="./13.225.244.14 - IP Location found in United States _files/leaflet.css">
+<script async="" src="./13.225.244.14 - IP Location found in United States _files/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="" type="text/javascript"></script>
+<style type="text/css">
+    /* adjust map marker content */
+    
+    .leaflet-popup-content div * {
+        margin: 0;
+    }
+    
+    .leaflet-popup-content p {
+        text-align: left;
+    }
+    
+    .leaflet-popup-content-wrapper {
+        border-radius: 0;
+    }
+    </style>
+<script type="text/javascript">
+    //<![CDATA[
+
+    // set equal height on map cell on desktop
+    function setMapH() {
+        var vw = window.innerWidth;//$(window).width();
+        var bp = 1023;
+        if (vw > bp) {
+          // deduct track div height
+          var resultsHeight = $('.myipaddress .table-auto').height();//-$('.map-container').find('.track').height();
+          $('#map').height(resultsHeight);
+        }
+    }
+    // setup map on viewport change
+    $(window).resize(setMapH);
+
+    function initMap() {
+
+        // set map cell height manually because IE cannot render height:100%; on cell
+        setMapH();
+
+        var ip = "<div style=\"font-family:Verdana,Arial,Helvetica,Sans Serif;font-size:10px;text-align:center\">";
+        ip += "<H4>GeoLocation</H4> <br />";
+        ip += "13.225.244.14 with 13.225.244.14<br />";
+        ip += "geolocated in ";
+        ip += "  United States <img width='16px' height='11px' src=images/ip-flags/us.png></p>";
+        ip += "<" + "/div>";
+
+        // OSM map setup
+        var zoom = 9;
+        var myLatlng = [37.751, -97.822];
+        
+
+        
+
+
+        // create OSM map, pass DOM id
+        var mymap = L.map('map').setView(myLatlng, zoom);
+        
+        // create Lazy Load
+        const lazyInit = (element, fn) => {
+  			const observer = new IntersectionObserver((entries) => {
+    		if (entries.some(({isIntersecting}) => isIntersecting)) {
+     		observer.disconnect();
+      	fn();
+    		}
+  			});
+ 				observer.observe(element);
+				};
+				
+				
+        // create the tile layer with correct attribution
+        lazyInit(map, () => {
+        var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.tileLayer(osmUrl, {
+            //minZoom: 9,
+            //maxZoom: 18,
+            attribution: osmAttrib
+        }).addTo(mymap);
+        });
+
+
+        // setup marker icon
+        var iconImg = 'images/my-ip-address-location.gif';
+        var myIcon = L.icon({
+            iconUrl: iconImg,
+            iconSize: [50, 50]
+        });
+
+        // setup marker infowindow content
+        var content = ip;
+
+        var marker = L.marker(myLatlng, {
+            icon: myIcon
+        }).addTo(mymap);
+        marker.bindPopup(content);
+
+        // mouse events
+        marker.on('mouseover', function(e) {
+            this.openPopup();
+        });
+        //marker.on('mouseout', function(e) {
+        //    this.closePopup();
+        //});
+        marker.on('click', function(e) {
+            this.openPopup();
+        });
+
+        // create red circle 25km radius
+        var circle = L.circle(myLatlng, {
+            color: '#CC0000',
+            fillColor: '#666666',
+            fillOpacity: 0.2,
+            radius: 25000
+
+        })
+        circle.addTo(mymap);
+    }
+    
+    // load at the end
+    //]]>
+    </script>
+
+<div class="track">
+Geolocation of an IP on Map
+</div>
+<div id="map" style="width: 300px; height: 100%; margin-left:0px" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(282px, 172px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(187px, 114px, 0px) scale(1);"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/24.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(27px, -80px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/25.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(27px, 176px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/24(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-229px, -80px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/24(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(283px, -80px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/25(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-229px, 176px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/25(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(283px, 176px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/23.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(27px, -336px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/23(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-229px, -336px, 0px); opacity: 1;"><img alt="" role="presentation" src="./13.225.244.14 - IP Location found in United States _files/23(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(283px, -336px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="804" height="468" viewBox="-67 -39 804 468" style="transform: translate3d(-67px, -39px, 0px);"><g><path class="leaflet-interactive" stroke="#CC0000" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#666666" fill-opacity="0.2" fill-rule="evenodd" d="M357.0120888888896,224.11526193817917a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0 "></path></g></svg></div><div class="leaflet-pane leaflet-marker-pane"><img src="./13.225.244.14 - IP Location found in United States _files/my-ip-address-location.webp" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -25px; margin-top: -25px; width: 50px; height: 50px; transform: translate3d(370px, 224px, 0px); z-index: 224;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"><div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(370px, 224px, 0px); bottom: -7px; left: -109px;"><div class="leaflet-popup-content-wrapper"><div class="leaflet-popup-content" style="width: 178px;"><div style="font-family:Verdana,Arial,Helvetica,Sans Serif;font-size:10px;text-align:center"><h4>GeoLocation</h4> <br>13.225.244.14 with 13.225.244.14<br>geolocated in   United States <img width="16px" height="11px" src="./13.225.244.14 - IP Location found in United States _files/us.webp"><p></p></div></div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div><a class="leaflet-popup-close-button" href="https://www.ip-tracker.org/#close">×</a></div></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(3705px, 6304.82px, 0px) scale(32);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="https://www.ip-tracker.org/#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="https://www.ip-tracker.org/#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors</div></div></div></div>
+<div class="track">Advertisements</div>
+<div class="ad-1-large" style="margin-left:1px;">
+
+<ins class="adsbygoogle ad-large" style="display: block; width: 300px; height: 600px;" data-full-width-responsive="true" data-ad-client="ca-pub-7304917892182792" data-ad-slot="6796017459" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_3_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./13.225.244.14 - IP Location found in United States _files/ads(2).html" data-google-container-id="a!4" data-google-query-id="CIXZtoLJr_oCFZpfFQgd--YGdg" data-load-complete="true"></iframe></div></ins>
+<script type="text/javascript">
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+</script>
+</div>
+<br>
+</td>
+<td align="left" width="480" valign="top" class="myipaddress rslts-col">
+<div class="track">Basic Tracking Info</div><table class="table-auto" cellpadding="0" cellspacing="7" width="480" height="100%" border="0" align="left"><tbody><tr></tr><tr><th>IP Address:</th> <td class="tracking">13.225.244.14</td></tr><tr><th>Hostname:</th> <td>server-13-225-244-14.lis50.r.cloudfront.net</td></tr><tr><th>Internet Protocol:</th> <td class="tracking">IPv4 - IP Version 4</td></tr><tr><th>Types:</th> <td>Public</td></tr><tr><th>IP Classes:</th> <td class="tracking">Class A Range<br> (1.0.0.0 to 126.255.255.255)</td></tr><tr><th>Reverse DNS:</th><td>
+14.244.225.13.in-addr.arpa	</td></tr><tr><th>Blacklist Check:</th> <td>Not Blacklisted (Clean)
+<div style="font-size:10px; color:#666666">[<a href="https://www.ip-tracker.org/blacklist-check.php?ip=13.225.244.14" style="font-size:10px; text-decoration:underline;background-color:#FDF1F1" title="Check the complete reputation status of the IP address">13.225.244.14 Blacklist Check</a>]</div></td></tr>
+<tr><td colspan="2" class="ad-1-336" style="margin: 5px auto;padding-top: 5px; padding-bottom: 5px; height: 100%;">
+
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7304917892182792" data-ad-slot="2147202256" data-adsbygoogle-status="done"></ins>
+<script type="text/javascript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</td></tr><tr><th>NSLookup (Nameservers):</th><td class="tracking"><pre class="nms">ns-1306.awsdns-35.org &gt;&gt; 205.251.197.26</pre><pre class="nms">ns-666.awsdns-19.net &gt;&gt; 205.251.194.154</pre><pre class="nms">ns-418.awsdns-52.com &gt;&gt; 205.251.193.162</pre><pre class="nms">ns-1597.awsdns-07.co.uk &gt;&gt; 205.251.198.61</pre></td></tr>
+<tr><th class="track" colspan="2">Location Details United States</th></tr><tr><th>Continent:</th><td class="tracking">North America (NA)</td></tr><tr><th>Country:</th><td> United States &nbsp;&nbsp;<img width="16px" height="11px" src="./13.225.244.14 - IP Location found in United States _files/us.webp" alt="IP Location Found In United States"> (US) </td></tr><tr><th>National Motto:</th><td class="tracking"> In God We Trust (official) / God Bless America (unofficial) </td></tr><tr><th>Anthem:</th><td class="tracking">The Star-Spangled Banner (adopted 1931)</td></tr><tr><th>Capital:</th><td class="tracking">Washington</td></tr><tr><th>State:</th><td class="tracking">Unknown</td></tr><tr></tr><tr><th>City:</th><td> Unknown</td></tr><tr></tr><tr></tr><tr><th>ISP:</th><td>AMAZON-02</td></tr><tr><th>Organization:</th><td class="tracking">AMAZON-02</td></tr><tr><th>AS Number:</th><td>AS16509 AMAZON-02</td></tr><tr><th><div id="weather1" data-simpleopenweather-city=","><p>something went wrong!</p></div></th><td><div id="weather" data-simpleopenweather-city=","><p>something went wrong!</p></div> </td></tr><tr><th>Time Zone:</th><td class="tracking"> America/North_Dakota/Center</td></tr><tr><th>Local Time:</th><td>04:33:05</td></tr><tr><th>Timezone GMT offset:</th><td class="tracking">28800</td></tr><tr><th>Sunrise / Sunset:</th><td>14:22 / 02:22</td></tr><tr><th class="track" colspan="2">Extra Information</th></tr><tr><th>Continent Latitude/Longitude:</th><td class="tracking"> 46.07305 / -100.546</td></tr><tr><th>Country Latitude/Longitude:</th><td> 38 / -98</td></tr><tr><th>City Latitude/Longitude:</th><td class="tracking"> (37.751) / (-97.822)</td></tr><tr><th>Language:</th><td width="80%"> English</td></tr><tr><th>Speed:</th><td class="tracking">Unknown Internet Speed</td></tr><tr><th>Currency:</th><td class="myip">United States dollar($) (USD)</td></tr><tr><th>IDD Code:</th><td class="tracking">+1</td></tr></tbody></table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody></table>
+<script src="./13.225.244.14 - IP Location found in United States _files/bootstrap.js" type="text/javascript"></script>
+
+<br>
+</div>
+<div id="fb-root"></div>
+<br>
+<a id="back-to-top" href="https://www.ip-tracker.org/#" class="back-to-top" role="button" title="Click to return on the top page" style="display: inline; bottom: 16px;"><i class="chevron chevron?left"></i>
+
+</a>
+<div class="backbtn-btm">
+<span class="track">Last Queries:</span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=13.225.244.14">13.225.244.14</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Media.jade-net-home.com">Media.jade-net-home.com</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Mlsd.gov.sa">Mlsd.gov.sa</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=2409:4041:0e0d:efba:0000:0000:e1c9:df0d">2409:4041:0e0d:efba:0000:0000:e1c9:df0d</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Wankerson.com">Wankerson.com</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=185.115.0.11">185.115.0.11</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=188.136.225.0">188.136.225.0</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Esa.int">Esa.int</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Lo3.gdynia.pl">Lo3.gdynia.pl</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=94.205.206.44">94.205.206.44</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=2001:8003:b114:2e00:10b8:c979:b6ad:b9ff">2001:8003:b114:2e00:10b8:c979:b6ad:b9ff</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=Www.scanatura.no">Www.scanatura.no</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=47.88.217.252">47.88.217.252</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=24.15.199.18">24.15.199.18</a>, </span><span class="lookups">
+<a href="https://www.ip-tracker.org/lookup.php?ip=78.183.110.60">78.183.110.60</a>, </span>
+<script type="text/javascript" src="./13.225.244.14 - IP Location found in United States _files/jquery.simpleopenweather.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+						$("#weather").simpleopenweather({template: '<span>IP Weather Station: {{place}}<br />Sky: {{sky}}<br /> Temp: {{temperature.current}} ?C (max {{temperature.max}} ?C / min {{temperature.min}} ?C)<br /> Wind Speed: {{wind.speed}} m/s<br /> Wind Direction: {{wind.direction}}?<br /> Humidity: {{humidity}}% <br />Cloudiness:  {{cloudiness}}% <br />Atmospheric pressure: {{pressure}} kPa</span>', units: 'metric'});
+			$("#weather1").simpleopenweather({template: '<span>{{icon}} </span>', units: 'metric'});
+ // load map last
+    $(window).ready(function () {
+        setTimeout(function() { initMap(); }, 300);
+    });
+		});
+	</script>
+<div id="footer">
+<div id="copyrightdesign" align="center">
+<a href="https://www.ip-tracker.org/tracer/trace-ip.php">Trace IP API</a>
+- <a href="https://www.ip-tracker.org/privacy-policy.php">Privacy Policy</a>
+- <a href="https://www.ip-tracker.org/contact.php">Contact</a>
+<hr>
+</div>
+<div id="footercontact">
+Copyright © 2012 - 2022 IP Tracker. All rights reserved.
+</div><div class="google-revocation-link-placeholder" style="width: 100%; height: auto; clear: both;"><div style="color: initial !important; font: initial !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-synthesis: initial !important; font-variation-settings: initial !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; align-content: initial !important; align-items: center !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: rgb(255, 255, 255) !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border: 0px !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-inline: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: initial !important; cx: initial !important; cy: initial !important; d: initial !important; display: flex !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: column !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: initial !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; justify-content: center !important; justify-items: initial !important; letter-spacing: initial !important; lighting-color: initial !important; line-break: initial !important; list-style: initial !important; margin-block: initial !important; margin: initial !important; margin-inline: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: initial !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: initial !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: initial !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: initial !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;"><button style="color: rgb(26, 115, 232) !important; font-family: Arial, sans-serif !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-size: 14px !important; font-stretch: initial !important; font-style: initial !important; font-synthesis: initial !important; font-variant: initial !important; font-variation-settings: initial !important; font-weight: bold !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; place-content: initial !important; place-items: initial !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: rgb(255, 255, 255) !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border-bottom: 2px solid rgb(236, 237, 237) !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-image: initial !important; border-inline: initial !important; border-left: initial !important; border-right: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; border-top: 2px solid rgb(236, 237, 237) !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: pointer !important; cx: initial !important; cy: initial !important; d: initial !important; display: block !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: initial !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: initial !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; letter-spacing: 0.2px !important; lighting-color: initial !important; line-break: initial !important; line-height: initial !important; list-style: initial !important; margin-block: initial !important; margin-bottom: initial !important; margin-inline: initial !important; margin-left: initial !important; margin-right: 0px !important; margin-top: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: 8px 0px !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: center !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: none !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: 100% !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;"><div style="color: rgb(26, 115, 232) !important; font-family: Arial, sans-serif !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-size: 14px !important; font-stretch: initial !important; font-style: initial !important; font-synthesis: initial !important; font-variant: initial !important; font-variation-settings: initial !important; font-weight: bold !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; place-content: initial !important; place-items: initial !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: rgb(255, 255, 255) !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border: initial !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-inline: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: pointer !important; cx: initial !important; cy: initial !important; d: initial !important; display: inline-flex !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: initial !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: initial !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; letter-spacing: 0.2px !important; lighting-color: initial !important; line-break: initial !important; line-height: initial !important; list-style: initial !important; margin-block: initial !important; margin: initial !important; margin-inline: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: 8px 0px !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: initial !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: none !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: initial !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;"><img src="./13.225.244.14 - IP Location found in United States _files/gpp_good_24px_blue_600.svg" style="color: rgb(26, 115, 232) !important; font-family: Arial, sans-serif !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-size: 14px !important; font-stretch: initial !important; font-style: initial !important; font-synthesis: initial !important; font-variant: initial !important; font-variation-settings: initial !important; font-weight: bold !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; place-content: initial !important; place-items: initial !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: initial !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border: initial !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-inline: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: pointer !important; cx: initial !important; cy: initial !important; d: initial !important; display: initial !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: initial !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: 24px !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; letter-spacing: 0.2px !important; lighting-color: initial !important; line-break: initial !important; line-height: initial !important; list-style: initial !important; margin-block: initial !important; margin: 0px 8px 0px 0px !important; margin-inline: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: initial !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: initial !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: none !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: 24px !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;"><span style="color: rgb(26, 115, 232) !important; font-family: Arial, sans-serif !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-size: 14px !important; font-stretch: initial !important; font-style: initial !important; font-synthesis: initial !important; font-variant: initial !important; font-variation-settings: initial !important; font-weight: bold !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; place-content: initial !important; place-items: initial !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: initial !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border: initial !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-inline: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: pointer !important; cx: initial !important; cy: initial !important; d: initial !important; display: initial !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: initial !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: initial !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; letter-spacing: 0.2px !important; lighting-color: initial !important; line-break: initial !important; line-height: 24px !important; list-style: initial !important; margin-block: initial !important; margin: initial !important; margin-inline: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: initial !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: initial !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: none !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: initial !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;">Privacy and cookie settings</span></div></button><span style="color: initial !important; font-family: Arial, sans-serif !important; font-feature-settings: initial !important; font-kerning: initial !important; font-optical-sizing: initial !important; font-palette: initial !important; font-size: 12px !important; font-stretch: initial !important; font-style: initial !important; font-synthesis: initial !important; font-variant: initial !important; font-variation-settings: initial !important; font-weight: initial !important; forced-color-adjust: initial !important; text-orientation: initial !important; text-rendering: initial !important; -webkit-font-smoothing: initial !important; -webkit-locale: initial !important; -webkit-text-orientation: initial !important; -webkit-writing-mode: initial !important; writing-mode: initial !important; zoom: initial !important; accent-color: initial !important; place-content: initial !important; place-items: initial !important; place-self: initial !important; alignment-baseline: initial !important; animation: initial !important; app-region: initial !important; appearance: initial !important; aspect-ratio: initial !important; backdrop-filter: initial !important; backface-visibility: initial !important; background: initial !important; background-blend-mode: initial !important; baseline-shift: initial !important; block-size: initial !important; border-block: initial !important; border: initial !important; border-radius: initial !important; border-collapse: initial !important; border-end-end-radius: initial !important; border-end-start-radius: initial !important; border-inline: initial !important; border-start-end-radius: initial !important; border-start-start-radius: initial !important; inset: initial !important; box-shadow: initial !important; box-sizing: initial !important; break-after: initial !important; break-before: initial !important; break-inside: initial !important; buffered-rendering: initial !important; caption-side: initial !important; caret-color: initial !important; clear: initial !important; clip: initial !important; clip-path: initial !important; clip-rule: initial !important; color-interpolation: initial !important; color-interpolation-filters: initial !important; color-rendering: initial !important; color-scheme: initial !important; columns: initial !important; column-fill: initial !important; gap: initial !important; column-rule: initial !important; column-span: initial !important; contain: initial !important; contain-intrinsic-block-size: initial !important; contain-intrinsic-size: initial !important; contain-intrinsic-inline-size: initial !important; container: initial !important; content: initial !important; content-visibility: initial !important; counter-increment: initial !important; counter-reset: initial !important; counter-set: initial !important; cursor: initial !important; cx: initial !important; cy: initial !important; d: initial !important; display: initial !important; dominant-baseline: initial !important; empty-cells: initial !important; fill: initial !important; fill-opacity: initial !important; fill-rule: initial !important; filter: initial !important; flex: initial !important; flex-flow: initial !important; float: initial !important; flood-color: initial !important; flood-opacity: initial !important; grid: initial !important; grid-area: initial !important; height: initial !important; hyphens: initial !important; image-orientation: initial !important; image-rendering: initial !important; inline-size: initial !important; inset-block: initial !important; inset-inline: initial !important; isolation: initial !important; letter-spacing: initial !important; lighting-color: initial !important; line-break: initial !important; line-height: initial !important; list-style: initial !important; margin-block: initial !important; margin-bottom: initial !important; margin-inline: initial !important; margin-left: 0px !important; margin-right: initial !important; margin-top: initial !important; marker: initial !important; mask: initial !important; mask-type: initial !important; max-block-size: initial !important; max-height: initial !important; max-inline-size: initial !important; max-width: initial !important; min-block-size: initial !important; min-height: initial !important; min-inline-size: initial !important; min-width: initial !important; mix-blend-mode: initial !important; object-fit: initial !important; object-position: initial !important; object-view-box: initial !important; offset: initial !important; opacity: initial !important; order: initial !important; origin-trial-test-property: initial !important; orphans: initial !important; outline: initial !important; outline-offset: initial !important; overflow-anchor: initial !important; overflow-clip-margin: initial !important; overflow-wrap: initial !important; overflow: initial !important; overscroll-behavior-block: initial !important; overscroll-behavior-inline: initial !important; overscroll-behavior: initial !important; padding-block: initial !important; padding: 8px 0px !important; padding-inline: initial !important; page: initial !important; page-orientation: initial !important; page-transition-tag: initial !important; paint-order: initial !important; perspective: initial !important; perspective-origin: initial !important; pointer-events: initial !important; position: initial !important; quotes: initial !important; r: initial !important; resize: initial !important; rotate: initial !important; ruby-position: initial !important; rx: initial !important; ry: initial !important; scale: initial !important; scroll-behavior: initial !important; scroll-margin-block: initial !important; scroll-margin: initial !important; scroll-margin-inline: initial !important; scroll-padding-block: initial !important; scroll-padding: initial !important; scroll-padding-inline: initial !important; scroll-snap-align: initial !important; scroll-snap-stop: initial !important; scroll-snap-type: initial !important; scrollbar-gutter: initial !important; shape-image-threshold: initial !important; shape-margin: initial !important; shape-outside: initial !important; shape-rendering: initial !important; size: initial !important; speak: initial !important; stop-color: initial !important; stop-opacity: initial !important; stroke: initial !important; stroke-dasharray: initial !important; stroke-dashoffset: initial !important; stroke-linecap: initial !important; stroke-linejoin: initial !important; stroke-miterlimit: initial !important; stroke-opacity: initial !important; stroke-width: initial !important; tab-size: initial !important; table-layout: initial !important; text-align: center !important; text-align-last: initial !important; text-anchor: initial !important; text-combine-upright: initial !important; text-decoration: initial !important; text-decoration-skip-ink: initial !important; text-emphasis: initial !important; text-emphasis-position: initial !important; text-indent: initial !important; text-overflow: initial !important; text-shadow: initial !important; text-size-adjust: initial !important; text-transform: initial !important; text-underline-offset: initial !important; text-underline-position: initial !important; touch-action: initial !important; transform: initial !important; transform-box: initial !important; transform-origin: initial !important; transform-style: initial !important; transition: initial !important; translate: initial !important; user-select: initial !important; vector-effect: initial !important; vertical-align: initial !important; visibility: initial !important; border-spacing: initial !important; -webkit-box-align: initial !important; -webkit-box-decoration-break: initial !important; -webkit-box-direction: initial !important; -webkit-box-flex: initial !important; -webkit-box-ordinal-group: initial !important; -webkit-box-orient: initial !important; -webkit-box-pack: initial !important; -webkit-box-reflect: initial !important; -webkit-highlight: initial !important; -webkit-hyphenate-character: initial !important; -webkit-line-break: initial !important; -webkit-line-clamp: initial !important; -webkit-mask-box-image: initial !important; -webkit-mask: initial !important; -webkit-mask-composite: initial !important; -webkit-print-color-adjust: initial !important; -webkit-rtl-ordering: initial !important; -webkit-ruby-position: initial !important; -webkit-tap-highlight-color: initial !important; -webkit-text-combine: initial !important; -webkit-text-decorations-in-effect: initial !important; -webkit-text-fill-color: unset !important; -webkit-text-security: initial !important; -webkit-text-stroke: initial !important; -webkit-user-drag: initial !important; -webkit-user-modify: initial !important; white-space: initial !important; widows: initial !important; width: initial !important; will-change: initial !important; word-break: initial !important; word-spacing: initial !important; x: initial !important; y: initial !important; z-index: initial !important;">Managed by Google. Complies with IAB TCF. CMP ID: 300</span></div></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<script defer="" src="./13.225.244.14 - IP Location found in United States _files/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon="{&quot;rayId&quot;:&quot;750269b54b2e94f2&quot;,&quot;token&quot;:&quot;f3f228edbdcc40cbb6ee49f1680f4870&quot;,&quot;version&quot;:&quot;2022.8.1&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./13.225.244.14 - IP Location found in United States _files/ads(3).html" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><iframe name="googlefcPresent" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;" src="./13.225.244.14 - IP Location found in United States _files/saved_resource(3).html"></iframe><iframe name="__tcfapiLocator" src="./13.225.244.14 - IP Location found in United States _files/saved_resource(4).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="__uspapiLocator" src="./13.225.244.14 - IP Location found in United States _files/saved_resource(5).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcInactive" src="./13.225.244.14 - IP Location found in United States _files/saved_resource(6).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcLoaded" src="./13.225.244.14 - IP Location found in United States _files/saved_resource(7).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe src="./13.225.244.14 - IP Location found in United States _files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./13.225.244.14 - IP Location found in United States _files/zrt_lookup.html" style="display: none;"></iframe><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important; width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; clear: none !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; position: fixed !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647 !important; background: transparent !important;" aria-hidden="true" data-ad-status="filled" data-vignette-loaded="true"><div id="aswift_4_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none !important; height: 100vh !important; width: 100vw !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: inline-block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><iframe id="aswift_4" name="aswift_4" style="width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; position: absolute !important; clear: none !important; display: inline !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; vertical-align: baseline !important; visibility: visible !important; z-index: auto !important;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="" height="" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./13.225.244.14 - IP Location found in United States _files/zrt_lookup(1).html" data-google-container-id="a!5" data-google-query-id="CPP6s4LJr_oCFRKhcQodvowEzQ" data-load-complete="true"></iframe></div></ins></html>

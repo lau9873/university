@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:paddingTop="1dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="0" app:layout_constraintTop_toBottomOf="0">
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body2" android:id="@+id/quantity" android:paddingTop="0.5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="16dp" android:paddingEnd="8dp"/>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Subhead" android:id="@+id/title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="0dp" android:paddingEnd="16dp"/>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body2" android:id="@+id/description" android:paddingTop="0.5dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <ImageButton android:id="@+id/icon" android:paddingTop="2dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:alpha="0.65" app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" style="@style/Widget.AppCompat.ActionButton"/>
+    </LinearLayout>
+    <View android:id="@+id/bottomDivider" android:background="#2a000000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="1dp" app:layout_constraintBottom_toBottomOf="0"/>
+</android.support.constraint.ConstraintLayout>

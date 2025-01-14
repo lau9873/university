@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android" android:description="@string/descriptionSurpassAPDU" android:requireDeviceUnlock="false" android:apduServiceBanner="@drawable/ic_surpass_app_category_service_banner">
+    <aid-group android:description="@string/descriptionSurpassAPDU" android:category="other">
+        <aid-filter android:name="315449432E"/>
+        <aid-filter android:name="315449432E49"/>
+        <aid-filter android:name="315449432E4943"/>
+        <aid-filter android:name="315449432E494341"/>
+        <aid-filter android:name="315449432E494341D6"/>
+        <aid-filter android:name="315449432E494341D620"/>
+        <aid-filter android:name="315449432E494341D62000"/>
+        <aid-filter android:name="315449432E494341D6200002"/>
+        <aid-filter android:name="315449432E494341D620000291"/>
+        <aid-filter android:name="315449432E494341D62000029101"/>
+    </aid-group>
+</host-apdu-service>

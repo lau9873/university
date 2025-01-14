@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="Limpar histórico de viagens" android:key="clear_history" android:summary="Apaga o histórico, actualmente armazenado apenas localmente"/>
+    <CheckBoxPreference android:enabled="false" android:title="Usar ecrã de viagem separado" android:key="separate_trip_mode" android:summary="Simplificar a GUI da app, separando o ecrã de início de viagem do ecrã de viagem em curso" android:defaultValue="false"/>
+    <Preference android:title="Partilhar estações/linhas próximas" android:key="debugNearbyStations"/>
+    <PreferenceCategory android:persistent="false" android:title="Timeouts de operadores" android:key="timeouts"/>
+</PreferenceScreen>

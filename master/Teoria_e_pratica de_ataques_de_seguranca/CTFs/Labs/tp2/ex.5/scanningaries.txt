@@ -1,0 +1,24 @@
+[[36m2022-09-26 22:46:49[0m] [[92maws-cloudfront-service[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mx-content-type-options[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mclear-site-data[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mcross-origin-resource-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-allow-credentials[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-allow-headers[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mcontent-security-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mpermission-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mcross-origin-embedder-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mcross-origin-opener-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mstrict-transport-security[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mx-permitted-cross-domain-policies[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-allow-origin[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-allow-methods[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mx-frame-options[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92mreferrer-policy[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-expose-headers[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:49[0m] [[92mhttp-missing-security-headers[0m:[1;92maccess-control-max-age[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com
+[[36m2022-09-26 22:46:52[0m] [[92mssl-dns-names[0m] [[94mssl[0m] [[34minfo[0m] https://aries.grab.com [[96m*.grab.com[0m]
+[[36m2022-09-26 22:46:52[0m] [[92mwaf-detect[0m:[1;92mcloudfront[0m] [[94mhttp[0m] [[34minfo[0m] https://aries.grab.com/
+[[36m2022-09-26 22:46:57[0m] [[92mdeprecated-tls[0m] [[94mssl[0m] [[34minfo[0m] https://aries.grab.com [[96mTLS10[0m]
+[[36m2022-09-26 22:46:57[0m] [[92mdeprecated-tls[0m] [[94mssl[0m] [[34minfo[0m] https://aries.grab.com [[96mTLS11[0m]
+[[36m2022-09-26 22:47:36[0m] [[92mtls-version[0m] [[94mssl[0m] [[34minfo[0m] https://aries.grab.com [[96mTLS13[0m]
+[[36m2022-09-26 22:47:36[0m] [[92mdetect-ssl-issuer[0m] [[94mssl[0m] [[34minfo[0m] https://aries.grab.com [[96mAmazon[0m]

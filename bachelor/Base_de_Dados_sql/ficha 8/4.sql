@@ -1,0 +1,24 @@
+DROP FUNCTION IF EXISTS getDepartment;
+DELIMITER $
+CREATE FUNCTION getDepartment(staff_id INT)
+RETURNS INT
+BEGIN
+  DECLARE dep_id INT;  
+  SET dep_id = NULL;
+
+  SELECT DEPARTMENT.DepId INTO dep_id
+	FROM STAFF S1 JOIN DEPARTMENT
+	ON(DEPARTMENT.Manager=S1.StaffId)
+	WHERE StaffId=staff_id;
+  
+  
+  IF dep_id IS NULL THEN
+	SELECT DEPARTMENT.DepId INTO dep_id
+	FROM STAFF S1 JOIN STAFF S2 ON(S1.StaffId=S2.Supervisor)
+	JOIN DEPARTMENT ON(DEPARTMENT.Manager=S1.StaffId)
+	WHERE S2.StaffId=staff_id;
+  END IF;
+  
+  RETURN dep_id;
+END $
+DELIMITER ;

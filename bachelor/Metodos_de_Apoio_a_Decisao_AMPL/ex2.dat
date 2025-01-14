@@ -1,0 +1,43 @@
+set SKILLS:=c py web;
+set PROGRAMMERS:= p1 p2 p3 ;
+set TASKS:= t1 t2 t3 t4 t5;
+
+param a: 
+  p1 p2 p3 :=
+c 1 . 1 
+py 1 1 . 
+web 1 1 1;
+
+param:
+        hours  costperhour:=
+p1       4       5
+p2      10       5
+p3       7       5;
+
+
+param:
+    price:=
+t1 250
+t2 150
+t3 200
+t4 100
+t5 250;
+
+param hourspertask:
+    c   py   web:=
+t1   5    .    2
+t2   .    3    .
+t3   .    6    3
+t4   3    3    3
+t5   2    3    2;
+
+param review:
+
+p1 p2 p3:= 
+c 5 . 5 
+py 5 3 . 
+web 1 5 1;
+
+
+param ProgTask:=1;
+param lower:= 505;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/sources/10" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/11" isTestSource="false" packagePrefix="p205h.p208b.p209a.p212e.p216d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/15" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/1a" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/1c" isTestSource="false" packagePrefix="p205h.p208b.p209a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/1d" isTestSource="false" packagePrefix="p205h.p208b.p209a.p212e.p216d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/34" isTestSource="false" packagePrefix="p205h.p208b.p209a.p212e.p216d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/40" isTestSource="false" packagePrefix="pt.card4b.backendbeacons" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/62" isTestSource="false" packagePrefix="p181e" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/72" isTestSource="false" packagePrefix="pt.card4b.backendbeacons" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/78" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/85" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/86" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/89" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/8a" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/8b" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/8c" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/91" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/92" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/93" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/94" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/95" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/96" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/97" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/98" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/99" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/9e" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/9f" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/a3" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/a4" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/a5" isTestSource="false" packagePrefix="pt.card4b.backendbeacons" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/b4" isTestSource="false" packagePrefix="p205h.p208b.p209a.p210d" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/d0" isTestSource="false" packagePrefix="pt.card4b.backendbeacons" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/e8" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/e9" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/ea" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/ec" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/f0" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/f1" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/f3" isTestSource="false" packagePrefix="p205h.p206a.p207a" />
+      <sourceFolder url="file://$MODULE_DIR$/sources/fa" isTestSource="false" packagePrefix="p205h.p208b.p209a.p212e.p216d" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,83 @@
+FUNCIONARIO
+(
+   _Num_,
+   Nome,
+   Email,
+   {Telefone},
+   Sexo, 
+   TrabFaz,
+   DataNasc,
+   Morada(Rua,Num, Andar?, Localidade, CodPostal)
+)
+
+CLIENTE
+(
+_NumMec_,
+Nome,
+Email,
+Sexo,
+DataNasc,
+{Telefone},
+Morada(Rua,Num, Andar?, Localidade, CodPostal),
+FimMulta?,
+Departamento
+)
+
+ARTIGO
+(
+_Codigo_,
+Titulo?,
+Autor?,
+{AreaCientifica},
+NumPaginas?,
+Volume?,
+Temas?,
+Tipo,
+Disponibilidade
+)
+
+SALA_DE_ESTUDO
+(
+_Codigo_,
+Capacidade,
+NumPCs,
+LimiteTempo
+)
+
+CADEIRA
+(
+_Codigo_,
+Nome,
+Curso
+)
+
+EVENTO
+(
+_Codigo_,
+Capacidade,
+DataHora,
+Tipo
+)
+
+PISO
+(
+_Num_,
+{Area},
+NumEspacoLeitura
+)
+
+CLIENTE == N == <ATENDIDO_POR(Tipo,DataHora)> == 1 == FUNCIONARIO
+ARTIGO -- N -- <LOCALIZACAO(Estante?,Seccao)> == 1 == PISO
+SALA_DE_ESTUDO -- N -- <LOCALIZADO(Especificamente?)> == 1 == PISO
+CADEIRA -- 1 -- <REGENTE(DataInicio)> == 1 == FUNCIONARIO
+EVENTO -- N -- <DECORRE(RazaoEspecifica,Duracao)> == 1 == SALA_DE_ESTUDO
+ARTIGO == 1 == <REQUISITADO(DataHora)> == 1 == CLIENTE
+CLIENTE == N == <INSCRICAO(NumEntrada)> -- M -- EVENTO
+ARTIGO == N == <RECOMENDADO_POR_CADEIRA(GrauDeObrigatoriadade)> -- M -- CADEIRA 
+EVENTO == M == <USADO_POR_EVENTO(Justificacao?)> == N == ARTIGO
+CLIENTE == 1 == <CLIENTE_RESERVOU(Inicio,Fim)> == 1 == SALA_DE_ESTUDO
+CADEIRA == 1 == <CADEIRA_ASSOCIADA(TemaReferido)> == M == EVENTO
+FUNCIONARIO == N == <RESPONSAVEL_PELO_EVENTO(Funcao) -- M -- EVENTO
+FUNCIONARIO == M == <LIMPEZA(DataHora)> -- 1 -- PISO
+
+

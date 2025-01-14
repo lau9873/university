@@ -1,0 +1,6 @@
+SELECT StaffId
+From STAFF
+WHERE Supervisor is NULL
+UNION 
+SELECT Manager
+FROM DEPARTMENT;

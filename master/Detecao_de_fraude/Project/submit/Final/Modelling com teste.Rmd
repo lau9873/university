@@ -1,0 +1,173 @@
+---
+title: "Modelling"
+author: "Cláudia"
+date: "2023-06-11"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(cluster)
+library(dbscan)
+library(factoextra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(imputeTS)
+library(rpart)
+library(class)
+library(neuralnet)
+library(e1071)
+library(ipred)
+library(randomForest)
+library(gbm)
+library(xgboost)
+library(kknn)
+library(tidymodels)
+library(discrim)
+library(klaR)
+library(rpart.plot)
+library(pROC)
+library(caret)
+library(ROSE)
+library(caret)
+library(randomForest)
+
+rm(list = ls())
+```
+
+##Task 2: Predictive Modelling 
+Primeiro comecei por importar os dados featured.
+```{r}
+dados_featured_lista <- readRDS("dados_featured_teste.rds")
+dados_featured_nome_lista <- c("dados de treino com valores NA preenchidos", 
+                               "dados de treino com reducao PCA",
+                               "dados de treino com reducao SVD",
+                               "dados de teste com valores NA preenchidos",
+                               "dados de teste com reducao PCA",
+                               "dados de teste com reducao SVD")  
+```
+
+Comecei logo por fazer vários testes submetendo no kaggle, alterando apenas alguns parâmetros. Como o código ficaria repetitivo, optei por apresentar a melhor versão dos dados alterados.
+Tive de fazer um balanceamento dos dados, para diminuir a discrepancia do volume de dados com fraude e sem fraude. Para verificar que resultados submeter no kaggle, utilizei o código do bloco de código a seguir.
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(baguette)
+library(vip)
+
+dados <- dados_featured_lista[[1]]
+teste <- dados_featured_lista[[4]]
+dados_treino_balanceados <- ovun.sample(is_fraud ~ ., data = dados, method = "both", N = nrow(dados), seed = 1234)$data
+model_bagg10 <- bag_tree(mode = "classification", tree_depth = 3) %>% 
+  set_engine("rpart", times = 60)
+bagg10_fit <- model_bagg10 %>%fit(is_fraud ~ ., data = dados_treino_balanceados)
+
+model_boost30 <- boost_tree(mode = "classification", engine = "xgboost", tree_depth = 3,
+  trees = 30, mtry=10, loss_reduction=0.5, learn_rate=0.001, min_n=2)
+
+boost30_fit <- model_boost30 %>% fit(is_fraud ~ ., data = dados_treino_balanceados)
+vip(boost30_fit)
+
+boost_preds <- teste %>%
+add_column(predict(boost30_fit, teste)) %>%
+rename(boost_pred = .pred_class) %>%
+  add_column(predict(bagg10_fit, teste)) %>%
+rename(bagg_pred = .pred_class)
+
+summary(boost_preds)
+resultado <- data.frame(id=boost_preds$id, is_fraud=boost_preds$bagg_pred)
+summary(resultado)
+```
+Neste bocado de código utilizei outro método de balanceamento, que originou resultados semelhantes. E dividi o conjunto de teste de treino para poder prever uma melhor accuracy.
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(baguette)
+library(vip)
+
+dados <- dados_featured_lista[[1]]
+teste <- dados_featured_lista[[4]]
+
+#for (i in 1:3){
+  per <-0.8
+  set.seed(123)
+  split_dados <- dados %>% initial_split(prop=per,is_fraud)
+  dados_treino <- training(split_dados)
+  dados_teste <- testing(split_dados)
+  dados_treino <- as.data.frame(dados_treino)
+  dados_teste <- as.data.frame(dados_teste)
+  
+  
+  
+  dados_majoritarios <- subset(dados_treino, is_fraud == 0)  
+  dados_minoritarios <- subset(dados_treino, is_fraud == 1) 
+  n_sinteticos <-( nrow(dados_majoritarios) - nrow(dados_minoritarios) ) #*i/2 #<- melhor i/2 = 1 e com model_boost
+  amostra_minoritaria <- dados_minoritarios[sample(nrow(dados_minoritarios), size = n_sinteticos, replace = TRUE), ]
+  dados_sinteticos <- data.frame(
+    var1 = runif(n_sinteticos, min = min(dados_majoritarios$var1, na.rm = TRUE), max = max(dados_majoritarios$var1, na.rm = TRUE)),
+    var2 = runif(n_sinteticos, min = min(dados_majoritarios$var2, na.rm = TRUE), max = max(dados_majoritarios$var2, na.rm = TRUE)),
+    is_fraud = 1  
+  )
+  dados_sinteticos <- na.omit(dados_sinteticos)
+  dados_balanceados <- rbind(dados_majoritarios, amostra_minoritaria, dados_sinteticos)
+  
+  dados_treino_balanceados <- ovun.sample(is_fraud ~ ., data = dados, method = "both", N = nrow(dados), seed = 1234)$data #<- melhor balanceado
+  
+  
+  
+ 
+  model_boost <- boost_tree(mode = "classification", engine = "xgboost", tree_depth = 2,
+    trees = 60, mtry=10, loss_reduction=0.01, learn_rate=0.001, min_n=3)
+  boost_fit <- model_boost %>% fit(is_fraud ~ ., data = dados_balanceados)
+  model_bagg <- bag_tree(mode = "classification", tree_depth = 4) %>% 
+    set_engine("rpart", times = 40)
+  bagg_fit <- model_bagg %>%fit(is_fraud ~ ., data = dados_balanceados)
+  
+  
+  model_boost2 <- boost_tree(mode = "classification", engine = "xgboost", tree_depth = 2,
+    trees = 60, mtry=10, loss_reduction=0.01, learn_rate=0.001, min_n=3)
+  boost_fit2 <- model_boost2 %>% fit(is_fraud ~ ., data = dados_treino_balanceados)
+  model_bagg2 <- bag_tree(mode = "classification", tree_depth = 4) %>% 
+    set_engine("rpart", times = 30) #<- melhor com tree_depth = 4 e times = 30
+  bagg_fit2 <- model_bagg2 %>%fit(is_fraud ~ ., data = dados_treino_balanceados)
+  
+  boost_preds <- dados_teste %>%
+  add_column(predict(boost_fit, dados_teste)) %>%
+  rename(boost_pred = .pred_class) %>%
+    add_column(predict(bagg_fit, dados_teste)) %>%
+  rename(bagg_pred = .pred_class)%>%
+  add_column(predict(boost_fit2, dados_teste)) %>%
+  rename(boost_pred2 = .pred_class) %>%
+    add_column(predict(bagg_fit2, dados_teste)) %>%
+  rename(bagg_pred2 = .pred_class)
+  
+  
+  resultado <- data.frame(id=boost_preds$id, is_fraud=boost_preds$boost_pred)
+  
+  roc_boost <- roc(boost_preds$is_fraud, as.numeric(boost_preds$boost_pred))
+  auc_boost <- auc(roc_boost)
+  roc_bag <- roc(boost_preds$is_fraud, as.numeric(boost_preds$bagg_pred))
+  auc_bag <- auc(roc_bag)
+  
+  roc_boost2 <- roc(boost_preds$is_fraud, as.numeric(boost_preds$boost_pred2))
+  auc_boost2 <- auc(roc_boost2)
+  roc_bag2 <- roc(boost_preds$is_fraud, as.numeric(boost_preds$bagg_pred2))
+  auc_bag2 <- auc(roc_bag2)
+  
+ # print(paste("balanceamento",(i/2)))
+  print (paste("xgboost com dados sinteticos 1:",auc_boost))
+  print (paste("bagging com dados sinteticos 1:",auc_bag))
+  print (paste("xgboost com dados sinteticos 2:",auc_boost2)) 
+  print (paste("bagging com dados sinteticos 2:",auc_bag2))
+  
+#}
+```
+
+Para criar o ficheiro para submeter no kaggle:
+```{r}
+write.csv(resultado, file = "resultado1.csv", row.names = FALSE)
+
+```
+

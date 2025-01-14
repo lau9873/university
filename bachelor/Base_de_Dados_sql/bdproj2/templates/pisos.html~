@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ piso.Num }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Piso Info</h2>
+
+<p>
+  <b>Número: </b>{{piso.Num }}
+</p>
+
+<p>
+  <b>Número de espaços de Leitura: </b>{{piso.Espacos_de_Leitura }}
+</p>
+
+
+<p>
+  <b>Número de salas de Estudo: </b>{{salasDeEstudo.NumdeArtigos}}
+</p>
+
+<p> 
+  <b>Número de Artigos: </b>{{artigos.Numero_de_Artigos}}
+</p>
+
+<p> 
+  <b>Número de Áreas Científicas: </b>{{areasCientificas.Numero_de_Areas_Cientificas}}
+</p>
+{% endblock %}

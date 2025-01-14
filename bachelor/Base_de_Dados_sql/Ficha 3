@@ -1,0 +1,81 @@
+
+---------1-------------
+1.
+	CodEspaço
+	NumCC
+2.
+	Gestor 
+	Espaço e Supervisor
+
+3.
+	integridade de domínio
+	integridade de chave
+	integridade referencial
+	integridade entidade
+	integridade referencial
+	integridade referencial
+	integridade referencial
+	integridade referencial
+	integridade domínio
+	integridade referencial
+
+---------2-------------
+
+
+
+
+
+
+
+---------3-------------
+table FUNCIONARIO
+(NumCC,
+Nome,
+DataNasc,
+Cargo,
+NumTelef, 
+Email?,
+Supervisor?
+)
+
+table EVENTO
+(CodEvento,
+Nome,
+DataInício,
+DataFim
+)
+
+table ESPACO
+(CodEspaco,
+Nome,
+Morada --> MORADA.Rua
+)
+
+table MORADA
+(Rua,
+Num,
+Andar?,
+CP,
+Localidade
+)
+
+table TRABALHA_EM
+(Funcionario --> FUNCIONARIO.NumCC,
+Espaco --> ESPACO.CodEspaco
+)
+
+table GERE
+(Funcionario --> FUNCIONARIO.NumCC,
+Espaco --> ESPACO.CodEspaco
+)
+
+table TEM_LUGAR
+(Evento --> EVENTO.CodEvento,
+Espaco --> ESPACO.CodEspaco,
+DataInicio,
+DataFim
+)
+table TELEFONE
+(Funcionario --> FUNCIONARIO.NumCC,
+NumTelef --> FUNCIONARIO.NumTelef
+)

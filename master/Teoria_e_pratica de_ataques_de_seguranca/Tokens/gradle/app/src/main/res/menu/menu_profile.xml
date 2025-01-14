@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_mode_edit_white_24dp" android:id="@+id/edit" android:title="@string/profile_action_edit"/>
+    <item android:id="@+id/password" android:title="@string/profile_action_changePassword"/>
+    <item android:id="@+id/logout" android:title="@string/action_logout"/>
+</menu>

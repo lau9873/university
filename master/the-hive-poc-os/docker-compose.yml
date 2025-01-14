@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.7
+    environment:
+      - http.host=0.0.0.0
+      - discovery.type=single-node
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    networks:
+      thehive-net:
+        ipv4_address: 172.133.37.2
+  cortex:
+    image: thehiveproject/cortex:latest
+    environment:
+      - job_directory=/tmp/cortex-jobs
+      - docker_job_directory=/tmp/cortex-jobs
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/cortex-jobs:/tmp/cortex-jobs
+      - ./cortex/logs:/var/log/cortex
+      - ./cortex/application.conf:/cortex/application.conf
+    depends_on:
+      - elasticsearch
+    ports:
+      - "0.0.0.0:9001:9001"
+    networks:
+      thehive-net:
+        ipv4_address: 172.133.37.3
+  thehive:
+    image: thehiveproject/thehive:latest
+    volumes:
+      - ./thehive/application.conf:/etc/thehive/application.conf
+    depends_on:
+      - elasticsearch
+      - cortex
+    ports:
+      - "0.0.0.0:9000:9000"
+    command: --cortex-port 9001
+    networks:
+      thehive-net:
+        ipv4_address: 172.133.37.4
+  ubuntu:
+    build: ./ubuntu
+    container_name: ubuntu-thehive
+    hostname: ubuntu-thehive
+    tty: true
+    networks:
+      thehive-net:
+        ipv4_address: 172.133.37.137
+  
+networks:
+  thehive-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.133.37.0/24

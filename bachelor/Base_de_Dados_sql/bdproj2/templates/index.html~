@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}MultiBiblio BD {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<p>This web application illustrates the use of the MultiBiblio
+database. The application is built using 
+<a href="https://pymysql.readthedocs.io/">PyMySQL</a>,
+<a href="https://flask.palletsprojects.com">Flask</a>, and
+<a href="https://jinja.palletsprojects.com">Jinja</a>.
+</p>
+
+<h2>Alguns Dados Estatísticos</h2>
+<table>
+<tr>
+  <th>Items</th>
+  <th>Count</th>
+</tr>
+<tr>
+  <td>Funcionarios</td>
+  <td>{{ stats.funcionarios }}</td>
+</tr>
+<tr>
+  <td>Clientes</td>
+  <td>{{ stats.clientes}}</td>
+</tr>
+<tr>
+  <td>Arigos</td>
+  <td>{{ stats.artigos}}</td>
+</tr>
+
+<tr>
+  <td>Eventos</td>
+  <td>{{ stats.eventos}}</td>
+</tr>
+
+<tr>
+  <td>Cadeiras</td>
+  <td>{{ stats.cadeiras}}</td>
+</tr>
+<tr>
+  <td>Salas de Estudo</td>
+  <td>{{ stats.salas_de_estudo}}</td>
+</tr>
+<tr>
+  <td>Pisos</td>
+  <td>{{ stats.pisos}}</td>
+</tr>
+
+</table>
+
+
+<h2>Informação</h2>
+
+<h3>Funcionários</h3>
+<p>
+   <a href="/funcionarios/">List all</a>
+</p>
+<p>Get Info Funcionário
+<form name="mid" action="javascript:window.open('/funcionarios/'+document.forms['mid'].elements['id'].value,'_self')">
+   Número Mecanográfico <input value="" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Pesquisa Por Nome (prone to <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection</a>!)
+  <form name="msearch" action="javascript:window.open('/funcionarios/search/'+document.forms['msearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+<h3>Clientes</h3>
+<p>
+   <a href="/clientes/">List all</a>
+</p>
+<p>Get Info Cliente
+<form name="aid" action="javascript:window.open('/clientes/'+document.forms['aid'].elements['id'].value,'_self')">
+   Número Mecanográfico <input value="" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Pesquisa por Nome (prone to <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection</a>!)
+  <form name="asearch" action="javascript:window.open('/clientes/search/'+document.forms['asearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+<h3>Artigos</h3>
+<p>
+   <a href="/artigos/">List all</a>
+</p>
+
+<p> Get Info Artigo
+<form name="gid" action="javascript:window.open('/artigos/'+document.forms['gid'].elements['id'].value,'_self')">
+   Código <input value="" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+
+<p>Pesquisa por Nome (prone to <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection</a>!)
+  <form name="asearch" action="javascript:window.open('/artigos/search/'+document.forms['asearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+<h3>Pisos</h3>
+<p>
+   <a href="/pisos/">List all</a>
+</p>
+
+<p>Get Info Piso
+<form name="pid" action="javascript:window.open('/pisos/'+document.forms['pid'].elements['id'].value,'_self')">
+   Número <input value="" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+
+
+<h3>Artigos Requisitados</h3>
+<p>
+   <a href="/ArtigosRequisitados">List all</a>
+</p>
+{% endblock %}

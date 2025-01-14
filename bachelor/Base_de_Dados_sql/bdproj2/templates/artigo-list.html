@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Artigos{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Codigo</th>
+    <th>Tipo</th>
+    <th>Título</th>
+    <th>Autor</th>
+    <th>Volume</th>
+  </tr>
+
+  {% for artigo  in artigos  %}
+  <tr>
+    <td><a href="/artigos/{{artigo.Codigo}}">{{artigo.Codigo }}</a></td>
+    
+    <td> {{artigo.Tipo}} </td>
+    <td>
+    {% if artigo.Titulo %}
+      {{artigo.Titulo}}
+    {% else %}
+      N/A
+    {% endif %}
+    </td>
+    <td>
+    {% if artigo.Autor %}
+      {{artigo.Autor}}
+    {% else %}
+      N/A
+    {% endif %}
+    </td>
+    <td>
+    {% if artigo.Volume %}
+      {{artigo.Volume}}
+    {% else %}
+      N/A
+    {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

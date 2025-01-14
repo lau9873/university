@@ -1,0 +1,100 @@
+ls
+ls
+ls
+ls
+
+
+
+
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls -l
+ls -l
+uname
+uname
+myhistory 2
+myhistory 2
+exit
+exit
+exiy
+exiy
+exit
+exit
+ls
+ls
+ls -l
+ls -l
+myhistory 1
+myhistory 1
+myhistory 2
+myhistory 2
+myhistory 4
+myhistory 4
+exir
+exir
+exit
+exit
+
+
+exit
+exit
+exit
+exit
+exit
+exit
+ls
+ls
+ls -l
+ls -l
+myhistory 2
+myhistory 2
+
+
+exit
+exit
+myhistory 2
+myhistory 2
+
+
+exit
+exit
+myhistory 2
+myhistory 2
+
+
+exit
+exit
+myhistory 2
+myhistory 2
+
+
+exit
+exit
+myhistory 2
+myhistory 2
+tail -5 shell_history.txt
+tail -5 shell_history.txt
+tail -2 shell_history.txt
+tail -2 shell_history.txt
+exit
+exit
+ls
+ls
+myhistory
+tail
+eixt
+ls
+
+
+ls
+ls
+exiy
+ls -l
+ls -l
+ls -a

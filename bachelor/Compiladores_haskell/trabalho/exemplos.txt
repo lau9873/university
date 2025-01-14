@@ -1,0 +1,18 @@
+fun main () { 
+    val x = 10.3;
+    print(3);
+    //olaaa
+    if (x==3.5) print (x);
+    var y = 3;
+    //readln(); // isto nao esta definido no typechecker...
+    if (x <= y) {print(x)} else {print(y)};
+    while (x > 0) y=y+3.4;
+    //while (x > 0) x=y+3.3;
+    y = 3.5 + 2 * 4;
+    //val y = 7;
+    //var y = "A";
+    val z = true && false;    
+}
+
+
+  

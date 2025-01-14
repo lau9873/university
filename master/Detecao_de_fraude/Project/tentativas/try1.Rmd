@@ -1,0 +1,570 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+Some libraries we may use:
+
+```{r}
+library(tidyverse)
+library(cluster)
+library(dbscan)
+library(factoextra)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(imputeTS)
+library(rpart)
+library(class)
+library(neuralnet)
+library(e1071)
+library(ipred)
+library(randomForest)
+library(gbm)
+library(xgboost)
+library(kknn)
+library(tidymodels)
+library(discrim)
+library(klaR)
+library(rpart.plot)
+```
+
+#Task 1: Data Understanding and Preparation and Descriptive Analytics ##Data Understanding and Preparation Para reunir os dados iniciais:
+
+```{r}
+rm(list = ls())
+setwd("/Users/lau/Desktop/Cláudia/Mestrado/1º ano/2º semestre/Deteção de Fraude/Project")
+dados <- read.csv("train.csv", header = TRUE, sep = ",")
+```
+
+Como o valor -1 em certa colunas representa valores NA, precisei de os substituir por NA.
+
+```{r}
+dados <- dados %>% mutate(prev_address_months_count = na_if(prev_address_months_count, -1), 
+                          current_address_months_count = na_if(current_address_months_count, -1),
+                          bank_months_count = na_if(bank_months_count, -1))
+```
+
+Posso usar a função summary() para obter informações adicionais sobre os dados e identificar se são numéricos ou categóricos. Assim posso converte-los já todos para numéricos.
+
+```{r}
+summary(dados)
+```
+
+É necessário dentificar os possíveis valores para variável categórica nas colunas (payment_type, employment_status, housing_status, and device_os) para poder convertê-las em numéricas para fazer uma análise estattística.
+
+```{r}
+valores_unicos <- unique(dados$payment_type)
+valores_unicos
+valores_unicos <- unique(dados$employment_status)
+valores_unicos
+valores_unicos <- unique(dados$housing_status)
+valores_unicos
+valores_unicos <- unique(dados$device_os)
+valores_unicos
+valores_unicos <- unique(dados$source)
+valores_unicos
+```
+
+```{r}
+dados_sum <- dados
+dados_sum$payment_type <- factor(dados_sum$payment_type, levels = c("AB", "AC", "AD", "AA", "AE"))
+dados_sum$payment_type <- as.numeric(dados_sum$payment_type)
+dados_sum$employment_status <- factor(dados_sum$employment_status, levels = c("CA", "CD", "CB", "CC", "CE", "CF", "CG"))
+dados_sum$employment_status <- as.numeric(dados_sum$employment_status)
+dados_sum$housing_status <- factor(dados_sum$housing_status, levels = c("BC", "BE", "BB", "BA", "BD", "BF"))
+dados_sum$housing_status <- as.numeric(dados_sum$housing_status)
+dados_sum$device_os <- factor(dados_sum$device_os, levels = c("linux", "other", "windows", "macintosh", "x11"))
+dados_sum$device_os <- as.numeric(dados_sum$device_os)
+dados_sum$source <- factor(dados_sum$source, levels = c("INTERNET", "TELEAPP"))
+dados_sum$source <- as.numeric(dados_sum$source)
+```
+
+##Descriptive Analytics 
+Para fazer a análise descritiva dos dados, podemos fazer uma análise estatística ou visual, através de gráficos. 
+##### Descriptive Statistics
+
+```{r}
+summary(dados_sum)
+glimpse(dados_sum)
+```
+
+A coluna "device_fraud_count" não dá nenhuma informação util, já que todos os seus valores são 0, assim podemos removê-la (coluna 31).
+
+```{r}
+dados_sum <- dados_sum[, -which(names(dados) == "device_fraud_count")]
+dados <- dados[, -which(names(dados) == "device_fraud_count")]
+```
+
+#####Data Visualization 
+Utilizei histograms e boxplots para visualizar variáveis discretas, enquanto as continuas utilizei graficos de densidade. Comparando os dados fraudulentos e não fraudulentos, podemos obter informações sobre as distribuições das variáveis.
+
+```{r}
+ggplot(dados, aes(x = income, fill = factor(is_fraud))) +
+  geom_bar(stat = "count") +
+  labs(title = "Histogram - Income",
+       x = "Income",
+       y = "Count",
+       fill = "Fraudulento") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados, aes(x = name_email_similarity, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Distribuição - name_email_similarity",
+       x = "name_email_similarity",
+       y = "Count",
+       fill = "Fraudulento") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados, aes(x = factor(is_fraud), y = prev_address_months_count)) +
+  geom_boxplot(fill = "lightgray", outlier.shape = NA) +
+  geom_jitter(aes(color = factor(is_fraud)), width = 0.2, height = 0.1, alpha = 0.7) +
+  ggtitle("Prev Address Months Count") +
+  xlab("Fraudulent") +
+  ylab("Months") +
+  scale_color_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento")) +
+  theme_minimal()
+ggplot(dados, aes(x = factor(is_fraud), y = current_address_months_count)) +
+  geom_boxplot(fill = "lightgray", outlier.shape = NA) +
+  geom_jitter(aes(color = factor(is_fraud)), width = 0.2, height = 0.1, alpha = 0.7) +
+  ggtitle("Current Address Months Count") +
+  xlab("Fraudulent") +
+  ylab("Months") +
+  scale_color_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento")) +
+  theme_minimal()
+ggplot(dados, aes(x = factor(is_fraud), y = customer_age, fill = factor(is_fraud))) +
+  geom_boxplot() +
+  ggtitle("Idade do Cliente") +
+  xlab("Fraude") +
+  ylab("Idade") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados, aes(x = factor(is_fraud), y = days_since_request, fill = factor(is_fraud))) +
+  geom_boxplot() +
+  ggtitle("Distribuição de dias desde a solicitação") +
+  xlab("Fraudulento") +
+  ylab("Dias desde a solicitação") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados, aes(x = factor(is_fraud), y = intended_balcon_amount, fill = factor(is_fraud))) +
+  geom_boxplot() +
+  ggtitle("Intended Balcon Amount by Fraudulent Status") +
+  xlab("Fraudulent") +
+  ylab("Intended Balcon Amount") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento"))
+ggplot(dados, aes(x = payment_type, fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Payment Type", y = "Count", fill = "Fraudulent") +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Não Fraudulento", "Fraudulento")) +
+  theme_minimal()
+ggplot(dados, aes(x = zip_count_4w, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Zip Count in 4 Weeks", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = velocity_6h, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Velocity in 6 Hours", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = velocity_24h, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Velocity in 24 Hours", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = velocity_4w, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Velocity in 4 Weeks", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = bank_branch_count_8w, fill = factor(is_fraud))) +
+  geom_histogram(binwidth = 100) +
+  labs(x = "Bank Branch Count in 8 Weeks", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = date_of_birth_distinct_emails_4w, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Distinct Emails in 4 Weeks", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = employment_status, fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Employment Status", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = credit_risk_score, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Credit Risk Score", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(email_is_free), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Email is Free", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("Paid", "Free")) +
+  theme_minimal()
+ggplot(dados, aes(x = housing_status, fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Housing Status", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(phone_home_valid), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Home Phone Valid", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("Invalid", "Valid")) +
+  theme_minimal()
+ggplot(dados, aes(x = factor(phone_mobile_valid), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Mobile Phone Valid", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("Invalid", "Valid")) +
+  theme_minimal()
+ggplot(dados, aes(x = bank_months_count, fill = factor(is_fraud))) +
+  geom_histogram(binwidth = 1) +
+  labs(x = "Bank Months Count", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(has_other_cards), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Has Other Cards", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  theme_minimal()
+ggplot(dados, aes(x = proposed_credit_limit, fill = factor(is_fraud))) +
+  geom_histogram(binwidth = 500) +
+  labs(x = "Proposed Credit Limit", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(foreign_request), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Foreign Request", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  theme_minimal()
+ggplot(dados, aes(x = factor(source), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Source", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = session_length_in_minutes, fill = factor(is_fraud))) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Session Length (Minutes)", y = "Density", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(device_os), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Device OS", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+ggplot(dados, aes(x = factor(keep_alive_session), fill = factor(is_fraud))) +
+  geom_bar() +
+  labs(x = "Keep Alive Session", y = "Count", fill = "Fraudulent") +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  theme_minimal()
+ggplot(dados, aes(x = device_distinct_emails_8w, fill = factor(is_fraud))) +
+  geom_histogram(binwidth = 1) +
+  labs(x = "Distinct Emails on Device", y = "Count", fill = "Fraudulent") +
+  theme_minimal()
+```
+
+Para fazer a correlação entre as colunas podemos fazer uma matriz de correlação ou um heatmap.
+
+```{r}
+matriz_cor <- cor(dados_sum)
+matriz_cor
+
+ggplot(data = reshape2::melt(matriz_cor), aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "blue", high = "red") +
+  theme_minimal() +
+  labs(title = "Matriz de Correlação")
+```
+
+Para tirar conclusões e analisar efetivamente o conjunto de dados, realizei uma Principal Component Analysis (PCA) e uma Singular Value Decomposition (SVD) para obter os componentes principais.
+
+No entanto, antes de realizar o PCA e o SVD, foi necessário lidar com os valores ausentes. Experimentei dois métodos: substituição e remoção. No método de substituição, substitui os valores ausentes pela moda para variáveis discretas e pela mediana para variáveis contínuas.
+
+```{r}
+dados_sem_na <- na.omit(dados_sum)
+```
+
+
+```{r}
+#Mode function
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+dados_preenchidos <- dados_sum
+median_1 <- median(dados_preenchidos$prev_address_months_count, na.rm = TRUE)
+dados_preenchidos$prev_address_months_count[is.na(dados_preenchidos$prev_address_months_count)] <- median_1
+
+median_2 <- median(dados_preenchidos$current_address_months_count, na.rm = TRUE)
+dados_preenchidos$current_address_months_count[is.na(dados_preenchidos$current_address_months_count)] <- median_2
+
+median_3 <- median(dados_preenchidos$employment_status, na.rm = TRUE)
+dados_preenchidos$employment_status[is.na(dados_preenchidos$employment_status)] <- median_3
+
+median_4 <- median(dados_preenchidos$bank_months_count, na.rm = TRUE)
+dados_preenchidos$bank_months_count[is.na(dados_preenchidos$bank_months_count)] <- median_4
+
+mode_5 <- Mode(dados_preenchidos$has_other_cards[!is.na(dados_preenchidos$has_other_cards)])
+dados_preenchidos$has_other_cards[is.na(dados_preenchidos$has_other_cards)] <- mode_5
+
+mode_6 <- Mode(dados_preenchidos$source[!is.na(dados_preenchidos$source)])
+dados_preenchidos$source[is.na(dados_preenchidos$source)] <- mode_6
+
+```
+
+PCA e SVD para 4 componentes principais:
+
+```{r}
+  num_componentes <- 4
+  dados_normalizados <- scale(dados_sem_na[, -which(names(dados) == "is_fraud")])
+  dados_normalizados_p <- scale(dados_preenchidos[, -which(names(dados) == "is_fraud")])
+  pca <- prcomp(dados_normalizados)
+  reducao_pca <- predict(pca, newdata = dados_normalizados)[, 1:num_componentes]
+  svd_resultado <- svd(dados_normalizados)
+  reducao_svd <- dados_normalizados %*% svd_resultado$v[, 1:num_componentes]
+  pca <- prcomp(dados_normalizados_p)
+  reducao_pca_p <- predict(pca, newdata = dados_normalizados_p)[, 1:num_componentes]
+  svd_resultado <- svd(dados_normalizados_p)
+  reducao_svd_p <- dados_normalizados_p %*% svd_resultado$v[, 1:num_componentes]
+  
+  dados_sem_na$is_fraud <- as.factor(dados_sem_na$is_fraud)
+  dados_preenchidos$is_fraud <- as.factor(dados_preenchidos$is_fraud)
+  reducao_pca <- cbind(reducao_pca, is_fraud = dados_sem_na$is_fraud)
+  reducao_svd <- cbind(reducao_svd, is_fraud = dados_sem_na$is_fraud)
+  reducao_pca_p <- cbind(reducao_pca_p, is_fraud = dados_preenchidos$is_fraud)
+  reducao_svd_p <- cbind(reducao_svd_p, is_fraud = dados_preenchidos$is_fraud)
+  dados_sem_na$is_fraud <- as.numeric(dados_sem_na$is_fraud)
+  dados_preenchidos$is_fraud <- as.numeric(dados_preenchidos$is_fraud)
+```
+
+##Task 2: Predictive Modelling 
+Para fazer a previsao de se é fraudulento ou nao, utilizei varios modelos que foram: Árvores de Decisão, K-Nearest Neighbors (KNN), Naive Bayes, Neural Networks, Support Vector Machines (SVM), Random Forest, Gradient Boosting Machines (GBM) e XGBoost. Assim utilizei cada modelo para cada um dos datasets com as colunas modificadas, sendo estes: dados com valores NA removidos, dados com valores NA preenchidos, dados com redução PCA e valores NA removidos, dados com redução PCA e valores NA preenchidos, dados com redução SVD e valores NA removidos, dados com redução SVD e valores NA preenchidos. Inicialmente realizei cada teste para diferente numeros de componentes dos PCA e SVD no entanto a variação deste parametro nao me fazia alterar as conclusoes retiradas sobre o melhor modelo a aplicar. Assim, para medir a precisao de cada modelo com as diferentes percentagens dos dados que podiamser cada um dos 6 datasets calculei a percentagem de erro de cada previsao. Embora tenha tido percentagens de erro a 0% isto indicava que estava a fazer overfitting, de modo a tentar contornar isso, realizei testes para diferentes percentagens dos dataset original, separando-o depois em 70% para dados de treino e 30% dados de teste.
+
+```{r}
+num_componentes_lista <- c(4) 
+percentagem_total_lista <- c(0.1, 0.2, 0.3, 0.5, 0.6, 0.7)
+matriz <- array(0, dim = c(6, 8, 6))
+#features,modelo,percentagem
+
+for (num_componentes in num_componentes_lista){
+  dados_normalizados <- scale(dados_sem_na[, -which(names(dados) == "is_fraud")])
+  dados_normalizados_p <- scale(dados_preenchidos[, -which(names(dados) == "is_fraud")])
+  pca <- prcomp(dados_normalizados)
+  reducao_pca <- predict(pca, newdata = dados_normalizados)[, 1:num_componentes]
+  svd_resultado <- svd(dados_normalizados)
+  reducao_svd <- dados_normalizados %*% svd_resultado$v[, 1:num_componentes]
+  pca <- prcomp(dados_normalizados_p)
+  reducao_pca_p <- predict(pca, newdata = dados_normalizados_p)[, 1:num_componentes]
+  svd_resultado <- svd(dados_normalizados_p)
+  reducao_svd_p <- dados_normalizados_p %*% svd_resultado$v[, 1:num_componentes]
+  
+  
+  dados_sem_na$is_fraud <- as.factor(dados_sem_na$is_fraud)
+  dados_preenchidos$is_fraud <- as.factor(dados_preenchidos$is_fraud)
+  reducao_pca <- cbind(reducao_pca, is_fraud = dados_sem_na$is_fraud)
+  reducao_svd <- cbind(reducao_svd, is_fraud = dados_sem_na$is_fraud)
+  reducao_pca_p <- cbind(reducao_pca_p, is_fraud = dados_preenchidos$is_fraud)
+  reducao_svd_p <- cbind(reducao_svd_p, is_fraud = dados_preenchidos$is_fraud)
+  dados_sem_na$is_fraud <- as.numeric(dados_sem_na$is_fraud)
+  dados_preenchidos$is_fraud <- as.numeric(dados_preenchidos$is_fraud)
+  
+  dados_featured_lista <- list(dados_sem_na, dados_preenchidos, 
+                               reducao_pca, reducao_pca_p,
+                               reducao_svd, reducao_svd_p)
+  dados_featured_nome_lista <- c("dados com valores NA removidos", 
+                                 "dados com valores NA preenchidos", 
+                                 "dados com redução PCA e valores NA removidos", 
+                                 "dados com redução PCA e valores NA preenchidos",
+                                 "dados com redução SVD e valores NA removidos", 
+                                 "dados com redução SVD e valores NA preenchidos")
+
+  
+  
+  print(paste("Numero de componentes:", num_componentes))
+  for (f in 1:6){
+    dados_featured <- dados_featured_lista[[f]]
+    dados_featured_nome <- dados_featured_nome_lista[f]
+    print(paste("Tipo de featuring usada: ",dados_featured_nome))
+    for (p in 1:6){
+      # Divisão em conjunto de treino e teste
+      percentagem_treino <- percentagem_total_lista[p]
+      set.seed(123)
+      tamanho_treino <- floor(percentagem_treino * nrow(dados_featured))
+      tamanho_teste <- nrow(dados_featured) - tamanho_treino
+      indices <- sample(1:nrow(dados_featured))
+      dados_treino <- dados_featured[indices[1:tamanho_treino], ]
+      dados_teste <- dados_featured[indices[(tamanho_treino + 1):nrow(dados_featured)], ]
+      dados_treino <- as.data.frame(dados_treino)
+      dados_teste <- as.data.frame(dados_teste)
+      
+      percentagem_erro_AD <- -1
+      percentagem_erro_KNN <- -1
+      percentagem_erro_NB <- -1
+      percentagem_erro_NN <- -1
+      percentagem_erro_SVM <- -1
+      percentagem_erro_RF <- -1
+      percentagem_erro_GBM <- -1
+      percentagem_erro_XGB <- -1
+      
+      
+      #Árvores de Decisão
+      tryCatch({
+        modelo <- rpart(is_fraud ~ ., data = dados_treino, method = "class")
+        previsao <- predict(modelo, newdata = dados_teste, type = "class")
+        resultado <- cbind(dados_teste, previsao)
+        percentagem_erro_AD <- sum(resultado$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        rm(previsao)
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro na AD")
+        percentagem_erro_KNN <- -1  
+      })
+      
+      #K-Nearest Neighbors (KNN)
+      tryCatch({
+        k <- 5
+        modelo_knn <- knn(train = dados_treino[, -ncol(dados_treino)], test = dados_teste[, -ncol(dados_teste)], cl = dados_treino$is_fraud, k = k)
+        previsao <- as.factor(modelo_knn)
+        resultado <- cbind(dados_teste, previsao)
+        percentagem_erro_KNN <- sum(dados_teste$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        rm(previsao)
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro no KNN")
+        percentagem_erro_KNN <- -1  
+      })
+      
+      
+      
+      #Naive Bayes
+      tryCatch({
+        dados_treino1 <- dados_treino
+        dados_teste1 <- dados_teste
+        dados_treino1$is_fraud <- as.factor(dados_treino1$is_fraud)
+        dados_teste1$is_fraud <- as.factor(dados_teste1$is_fraud)
+        rec <- recipe(is_fraud ~.,dados_treino1)
+        rec <- rec %>% step_normalize(all_numeric_predictors()) %>% prep()
+        dados_treino1 <- rec %>% bake(new_data=dados_treino1)
+        dados_teste1 <- rec %>% bake(new_data=dados_teste1)
+         model_nb <- naive_Bayes(mode="classification")
+          nb_fit <- model_nb %>% fit(is_fraud ~ ., data = dados_treino1)
+          resultado <- dados_teste1 %>% dplyr::select(is_fraud) %>% 
+          bind_cols(predict(nb_fit, dados_teste1)) %>% 
+          bind_cols(predict(nb_fit, dados_teste1, type = "prob"))
+        percentagem_erro_NB <- sum(resultado$is_fraud != resultado$.pred_class) / nrow(resultado) * 100  
+
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro no NB")
+        percentagem_erro_NB <- -1  
+      })
+      
+      #Neural Networks
+      tryCatch({
+        modelo_nn <- neuralnet(is_fraud ~ ., data = dados_treino, hidden = c(4, 2))
+        previsao <- compute(modelo_nn, dados_teste[, -ncol(dados_teste)])$net.result
+        previsao <- ifelse(previsao >= 0.5, 1, 0) 
+        resultado <- cbind(dados_teste, previsao)
+        percentagem_erro_NN <- sum(dados_teste$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        rm(modelo_nn)
+        rm(previsao)
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro no NN")
+        percentagem_erro_NN <- -1  
+      })
+      
+      
+      #Support Vector Machines (SVM)
+      tryCatch({
+        modelo_svm <- svm(is_fraud ~ ., data = dados_treino, type = "C")
+        previsao <- predict(modelo_svm, newdata = dados_teste)
+        resultado <- cbind(dados_teste, previsao)
+        percentagem_erro_SVM <- sum(dados_teste$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        rm(previsao)
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro no SVM")
+        percentagem_erro_SVM <- -1 
+      })
+      
+      #Random Forest
+      tryCatch({
+      dados_treino$is_fraud <- as.factor(dados_treino$is_fraud)
+      dados_teste$is_fraud <- as.factor(dados_teste$is_fraud)
+      model_rf <- rand_forest(mode = "classification", trees = 100) %>% 
+        set_engine("ranger", importance = "impurity")
+      rf_fit <- model_rf %>%
+        fit(is_fraud ~ ., data = dados_treino)
+      resultado <- dados_teste %>%
+      dplyr::select(is_fraud) %>%
+      add_column(predict(rf_fit, dados_teste))
+      
+        percentagem_erro_RF <- sum(dados_teste$is_fraud != resultado$.pred_class) / nrow(resultado) *100
+        
+        rm(resultado)
+      }, error = function(err) {
+        print("Ocorreu um erro no RF")
+        percentagem_erro_GBM <- -1  
+      })
+      
+      
+      #Gradient Boosting Machines (GBM)
+      tryCatch({
+        dados_treino$is_fraud <- as.numeric(as.factor(dados_treino$is_fraud))-1
+        dados_teste$is_fraud <- as.numeric(as.factor(dados_teste$is_fraud))-1
+        modelo_boosting <- gbm(is_fraud ~ ., data = dados_treino, distribution = "bernoulli", n.trees = 100)
+        previsao <- predict(modelo_boosting, newdata = dados_teste, n.trees = 50, type = "response")
+        previsao_classes <- ifelse(previsao > 0.5, 1, 0)
+        resultado <- cbind(dados_teste, previsao = previsao_classes)
+        percentagem_erro_GBM <- sum(dados_teste$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        rm(previsao)
+        rm(resultado)
+        rm(previsao_classes)
+      }, error = function(err) {
+        print("Ocorreu um erro no GBM")
+        percentagem_erro_GBM <- -1  
+      })
+      
+      
+      #XGBoost
+      tryCatch({
+        dtrain <- xgb.DMatrix(data = as.matrix(dados_treino[, -ncol(dados_treino)]), label = dados_treino$is_fraud)
+        dtest <- xgb.DMatrix(data = as.matrix(dados_teste[, -ncol(dados_teste)]), label = dados_teste$is_fraud)
+        param <- list( objective = "binary:logistic", eval_metric = "error")
+        modelo_xgb <- xgboost(data = dtrain, params = param, nrounds = 100,verbose = FALSE)
+        previsao <- predict(modelo_xgb, dtest)
+        previsao_classes <- ifelse(previsao > 0.5, 1, 0)
+        resultado <- cbind(dados_teste, previsao = previsao_classes)
+        percentagem_erro_XGB <- sum(dados_teste$is_fraud != resultado$previsao) / nrow(resultado) * 100
+        dados_treino$is_fraud <- as.factor(as.numeric(dados_treino$is_fraud) + 1)
+        rm(previsao)
+        rm(resultado)
+        rm(previsao_classes)
+      }, error = function(err) {
+        print("Ocorreu um erro no XGB")
+        percentagem_erro_XGB <- -1  
+      })
+    
+      
+      ##
+      print(paste("Percentagem da amostra:", percentagem_total*100, "%"))
+      
+      percentagens_de_erro_lista <- list(percentagem_erro_AD, percentagem_erro_KNN,
+                                         percentagem_erro_NB, percentagem_erro_NN,
+                                         percentagem_erro_SVM, percentagem_erro_RF,
+                                         percentagem_erro_GBM, percentagem_erro_XGB)
+      percentagem_erro_nome_lista <- c("AD", "KNN", "NB", "NN", "SVM", "RF", "GBM", "XGB")
+      
+      for (m in 1:8){
+        percentagens_de_erro <- percentagens_de_erro_lista[[m]]
+        percentagem_erro_nome <-percentagem_erro_nome_lista[m]
+        print(paste("Percentagem de erro de", percentagem_erro_nome, ": ",percentagens_de_erro))
+        matriz[f, m, p] <- percentagens_de_erro
+      }
+    }
+  }
+}
+```
+
+```{r}
+cores <- rainbow(ncol(matriz))
+for (i in 1:nrow(matriz)) {
+  dados <- t(matriz[i, , ])
+  matplot(percentagem_total_lista, dados, type = "l", col = cores, xlab = "Percentagem dos dados para treino",
+          ylab = "Percentagem de erros", main = paste("Feature", dados_featured_nome_lista[i]))
+  legend("topright", legend = percentagem_erro_nome_lista, col = cores, lty = 1)
+}
+
+
+
+```
+
+##Analysis and Conclusions

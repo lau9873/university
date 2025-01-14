@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/itemMain" android:background="?android:attr/listChoiceBackgroundIndicator" android:paddingLeft="16dp" android:paddingTop="8dp" android:paddingRight="16dp" android:paddingBottom="8dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="64dp">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:ellipsize="end" android:id="@+id/tProfileName" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1"/>
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:ellipsize="end" android:id="@+id/tProfileStatus" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="end" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@+id/tDateStart" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@+id/tDateEnd" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@+id/bottomDivider" android:background="#2a000000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp"/>
+</LinearLayout>

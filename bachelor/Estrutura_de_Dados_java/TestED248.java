@@ -1,0 +1,82 @@
+public class TestED248 {
+    public static void main(String[] args) {
+	int n = 1001;                      
+	IntSet s1 = new BooleanArrayIntSet(n);
+	IntSet s2 = new BooleanArrayIntSet(n);
+	IntSet s3 = new BooleanArrayIntSet(n);
+	IntSet s4 = new BooleanArrayIntSet(n);
+	IntSet s5 = new BooleanArrayIntSet(n);
+	IntSet s6 = new BooleanArrayIntSet(n);
+	IntSet s7 = new BooleanArrayIntSet(n);
+	System.out.println(s1.size());
+    	System.out.println(s1.add(42)) ;
+	System.out.println(s1.size());
+	System.out.println(s1.add(42)) ;
+	System.out.println(s1.add(21) );
+	System.out.println(s1.add(10)) ;
+	System.out.println(s1.size() );
+	System.out.println(s1.contains(10));
+	System.out.println(s1.contains(21) );
+	System.out.println(s1.contains(42));
+	System.out.println(s1.contains(9) );
+	System.out.println(s1.remove(42));
+	System.out.println(s1.size() );
+	System.out.println(s1.contains(10));
+	System.out.println(s1.contains(21) );
+	System.out.println(s1.contains(42) );
+	System.out.println(s1.remove(21));
+	System.out.println(s1.remove(21));
+	System.out.println(s1.size());
+	System.out.println(s1.contains(10) );
+	System.out.println(s1.contains(21) );
+	System.out.println(s1.contains(42) );
+	System.out.println(s1.remove(10));
+	System.out.println(s1.remove(10));
+	System.out.println(s1.size() );
+	System.out.println(s1.contains(10) );
+	System.out.println(s1.contains(21) );
+	System.out.println(s1.contains(42) );
+	System.out.println(s1.add(1) );
+	System.out.println(s1.add(2) );
+	s1.clear();
+	System.out.println(s1.contains(1));
+	System.out.println(s1.contains(2));
+	System.out.println(s1.size());
+	System.out.println(s1.equals(s2) );
+	System.out.println(s1.add(1000) );
+	System.out.println(s1.equals(s2));
+	System.out.println(s2.add(1000) );
+	System.out.println(s1.equals(s2) );
+	System.out.println(s1.add(500) );
+	System.out.println(s2.equals(s1));
+	System.out.println(s2.add(500));
+	System.out.println(s2.equals(s1));
+	s3 = s1.intersection(s2);
+	System.out.println(s3.equals(s1) );
+	System.out.println(s3.equals(s2) );
+	System.out.println(s4.add(11) );
+	System.out.println(s4.add(12) );
+	System.out.println(s4.add(13) );
+	System.out.println(s4.add(14));
+	System.out.println(s4.add(15) );
+	System.out.println(s4.add(16) );
+	System.out.println(s4.add(17) );
+	System.out.println(s5.add(11) );
+	System.out.println(s5.add(2) );
+	System.out.println(s5.add(13) );
+	System.out.println(s5.add(4) );
+	System.out.println(s5.add(15));
+	System.out.println(s5.add(6));
+	System.out.println(s5.add(17));
+	s6 = s4.intersection(s5);
+	System.out.println(s6.size() );
+	s5.clear();
+	s6 = s4.intersection(s5);
+	System.out.println(s6.size());
+        s7 = s6.intersection(s4);
+	System.out.println(s7.size());
+			   			   			  
+    }
+}
+			   
+			   

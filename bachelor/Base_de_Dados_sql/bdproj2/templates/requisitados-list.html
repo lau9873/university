@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>{% block title %}Artigos Requisitados{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Código</th>
+    <th>Título</th>
+    <th>NumMec do Requisitante</th>
+    <th>Data_do_Requisito</th>
+  </tr>
+
+  {% for artigo in Requisitado %}
+  <tr>
+    <td><a href="/artigo/{{artigo.Codigo}}">{{artigo.Codigo}}</a></td>
+    <td> {{ artigo.Titulo}}</td>
+    <td> {{ artigo.NumMec_Requisitante}}</td>
+    <td> {{ artigo.Data_do_Requisito}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

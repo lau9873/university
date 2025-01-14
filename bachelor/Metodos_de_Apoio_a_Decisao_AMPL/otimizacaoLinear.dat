@@ -1,0 +1,28 @@
+set prato:= bife frango peixe hamburger macarrao empada esparguete peru;
+set vit:= A C B1 B2;
+
+param: preco:=
+bife 319
+frango 259 
+peixe 229
+hamburger 289
+macarrao 189
+empada 199
+esparguete 199 
+peru 249;
+
+
+param percentagens:
+    A C B1 B2:=
+bife 60 20 10 15
+frango 8 0 20 20 
+peixe 8 10 15 10
+hamburger 40 40 35 10 
+macarrao 15 35 15 15
+empada 70 30 15 15 
+esparguete 25 50 25 15 
+peru 60 20 15 10;
+
+
+
+param min_semanal:=700;
